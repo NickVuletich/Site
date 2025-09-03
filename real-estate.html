@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Portfolio — Nick Vuletich Photography</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Curated portfolio: Real Estate, Drone, and Portraits by Nick Vuletich." />
+  <style>
+    :root{
+      --ink:#0A0A0A;
+      --paper:#FFFFFF;
+      --accent:#0E5CF7;
+      --muted:#8a8a8a;
+      --border:#eee;
+    }
+    *{box-sizing:border-box;transition:color .15s,background .15s,border-color .15s,opacity .15s,transform .25s}
+    html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,system-ui,sans-serif}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .nav a{color:inherit;text-decoration:none;margin-left:18px}
+    .nav .brand{font-weight:600;letter-spacing:.2px}
+    .nav .cta{background:var(--ink);color:#fff;border-radius:12px;padding:9px 14px}
+    h1{font-size:48px;line-height:1.05;margin:28px 0 8px}
+    .lead{color:#444;font-size:18px;margin:0 0 28px;max-width:760px}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 36px}
+    .tab{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;text-decoration:none;border:1px solid var(--border);color:#111}
+    .tab:hover{border-color:#ddd}
+    .tab.active{border-color:var(--accent);color:var(--accent)}
+    .section-title{font-size:36px;line-height:1.15;margin:60px 0 12px}
+    .caption{color:#666;margin:0 0 24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+    .card{position:relative;border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--border)}
+    .thumb{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+    .card:hover{transform:translateY(-2px)}
+    .figcap{padding:10px 12px;color:#555;font-size:14px}
+    .quiet-line{color:#777;font-size:14px;margin:8px 0 0}
+    footer{border-top:1px solid var(--border);padding:28px 0;color:#666;font-size:14px;margin-top:64px}
+
+    /* Simple no-JS lightbox via :target */
+    .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden}
+    .lightbox:target{opacity:1;visibility:visible}
+    .lightbox .overlay{position:absolute;inset:0;background:rgba(0,0,0,.8)}
+    .lightbox .stage{position:relative;z-index:2;max-width:92vw;max-height:92vh}
+    .lightbox img{max-width:92vw;max-height:92vh;display:block;border-radius:12px}
+    .close{position:absolute;top:18px;right:22px;z-index:3;color:#fff;text-decoration:none;font-size:28px;line-height:1}
+    .close:hover{opacity:.8}
+
+    @media (max-width:720px){
+      h1{font-size:36px}
+      .section-title{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <!-- anchor for closing :target lightboxes -->
+  <div id="close"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">Nick Vuletich</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#real-estate" class="tab">Real Estate</a>
+        <a href="#drone" class="tab">Drone</a>
+        <!-- <a href="#portraits" class="tab">Portraits</a> -->
+        <a href="index.html" class="cta">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:28px">
+    <h1>Portfolio</h1>
+    <p class="lead">A curated set across Real Estate, Drone, and Portraits. Clean lines, honest color, and the shots that sell the story.</p>
+
+    <!-- Quick tabs -->
+    <div class="tabs">
+      <a href="#all" class="tab active">All</a>
+      <a href="#real-estate" class="tab">Real Estate</a>
+      <a href="#drone" class="tab">Drone</a>
+      <!-- <a href="#portraits" class="tab">Portraits</a> -->
+    </div>
+    
+    <!-- ALL (optional: shows a mix of your best) -->
+    <!--
+    <section id="all" aria-label="Highlights">
+      <h2 class="section-title">Highlights</h2>
+      <p class="caption">A tight selection from recent shoots.</p>
+      <div class="grid">
+      -->
+        <!-- Replace src with your files; add as many cards as you want -->
+        <!--
+        <figure class="card">
+          <a href="#lb-all-01"><img loading="lazy" class="thumb" src="images/portfolio/real-estate-01.jpg" alt="Bright kitchen with island, Kent OH"></a>
+          <figcaption class="figcap">Kitchen — Kent, OH</figcaption>
+        </figure>
+
+        <figure class="card">
+          <a href="#lb-all-02"><img loading="lazy" class="thumb" src="images/portfolio/drone-01.jpg" alt="Aerial view of property and neighborhood"></a>
+          <figcaption class="figcap">Aerial — Neighborhood Context</figcaption>
+        </figure>
+
+        <figure class="card">
+          <a href="#lb-all-03"><img loading="lazy" class="thumb" src="images/portfolio/portrait-01.jpg" alt="Natural light portrait"></a>
+          <figcaption class="figcap">Portrait — Natural Light</figcaption>
+        </figure>
+
+        <figure class="card">
+          <a href="#lb-all-04"><img loading="lazy" class="thumb" src="images/portfolio/real-estate-02.jpg" alt="Living room staging with large windows"></a>
+          <figcaption class="figcap">Living Room — Staged</figcaption>
+        </figure>
+
+        <figure class="card">
+          <a href="#lb-all-05"><img loading="lazy" class="thumb" src="images/portfolio/drone-02.jpg" alt="Aerial rear yard with deck and trees"></a>
+          <figcaption class="figcap">Aerial — Rear Yard</figcaption>
+        </figure>
+
+        <figure class="card">
+          <a href="#lb-all-06"><img loading="lazy" class="thumb" src="images/portfolio/portrait-02.jpg" alt="Outdoor portrait at golden hour"></a>
+          <figcaption class="figcap">Portrait — Golden Hour</figcaption>
+        </figure>
+      </div>
+    <p class="quiet-line">I deliver every photo that meets my quality bar — no arbitrary cap.</p>
+    </section>
+--> 
+    <!-- REAL ESTATE -->
+    <section id="real-estate" aria-label="Real Estate">
+      <h2 class="section-title">Real Estate</h2>
+      <p class="caption">True color, straight lines, windows that glow. Interiors and exteriors that feel like home.</p>
+      <div class="grid">
+        <figure class="card">
+          <a href="#lb-re-01"><img loading="lazy" class="thumb" src="images/re1.jpg" alt="Sunlit kitchen with island"></a>
+          <figcaption class="figcap">Kitchen</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-re-02"><img loading="lazy" class="thumb" src="images/re2.jpg" alt="Minimal living room with large windows"></a>
+          <figcaption class="figcap">Living Room</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-re-03"><img loading="lazy" class="thumb" src="images/re3.jpg" alt="Primary bedroom with neutral palette"></a>
+          <figcaption class="figcap">Reading Room</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-re-04"><img loading="lazy" class="thumb" src="images/re4.jpg" alt="Twilight exterior front"></a>
+          <figcaption class="figcap">Master Bedroom</figcaption>
+        </figure>
+        <figure class="card">
+            <a href="#lb-re-05"><img loading="lazy" class="thumb" src="images/re5.jpg" alt="Twilight exterior front"></a>
+            <figcaption class="figcap">Basement</figcaption>
+          </figure>
+          <figure class="card">
+            <a href="#lb-re-06"><img loading="lazy" class="thumb" src="images/re6.jpg" alt="Twilight exterior front"></a>
+            <figcaption class="figcap">Workshop</figcaption>
+          </figure>
+      </div>
+    </section>
+
+    <!-- DRONE -->
+    <section id="drone" aria-label="Drone">
+      <h2 class="section-title">Drone</h2>
+      <p class="caption">Context, scale, and setting — the shots that help buyers understand the property.</p>
+      <div class="grid">
+        <figure class="card">
+          <a href="#lb-dr-01"><img loading="lazy" class="thumb" src="images/drone1.jpg" alt="Aerial top down of lot"></a>
+          <figcaption class="figcap">Lot — Top Down + Property Lines</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-dr-02"><img loading="lazy" class="thumb" src="images/drone2.jpg" alt="Aerial oblique showing house and trees"></a>
+          <figcaption class="figcap">House and Pool</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-dr-03"><img loading="lazy" class="thumb" src="images/drone3.png" alt="Neighborhood with nearby park"></a>
+          <figcaption class="figcap">Map to Business</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-dr-04"><img loading="lazy" class="thumb" src="images/drone4.jpg" alt="Sunset aerial"></a>
+          <figcaption class="figcap">Front + Side — Aerial</figcaption>
+        </figure>
+        <figure class="card">
+            <a href="#lb-dr-05"><img loading="lazy" class="thumb" src="images/drone5.jpg" alt="Sunset aerial"></a>
+            <figcaption class="figcap">Lot — Top Down + Property Lines</figcaption>
+          </figure>
+          <figure class="card">
+            <a href="#lb-dr-06"><img loading="lazy" class="thumb" src="images/drone6.jpg" alt="Sunset aerial"></a>
+            <figcaption class="figcap">Neighborhood view — Aerial</figcaption>
+          </figure>
+          <figure class="card">
+            <a href="#lb-dr-07"><img loading="lazy" class="thumb" src="images/drone7.jpg" alt="Sunset aerial"></a>
+            <figcaption class="figcap">Back Porch - Aerial</figcaption>
+          </figure>
+        
+      </div>
+    </section>
+
+    <!-- PORTRAITS -->
+    <!--
+    <section id="portraits" aria-label="Portraits">
+      <h2 class="section-title">Portraits</h2>
+      <p class="caption">Honest light. Natural confidence. Simple direction, strong results.</p>
+      <div class="grid">
+        <figure class="card">
+          <a href="#lb-po-01"><img loading="lazy" class="thumb" src="images/portfolio/portrait-01.jpg" alt="Portrait with soft window light"></a>
+          <figcaption class="figcap">Soft Window Light</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-po-02"><img loading="lazy" class="thumb" src="images/portfolio/portrait-02.jpg" alt="Outdoor portrait greenery"></a>
+          <figcaption class="figcap">Outdoor — Greenery</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-po-03"><img loading="lazy" class="thumb" src="images/portfolio/portrait-03.jpg" alt="Lifestyle portrait"></a>
+          <figcaption class="figcap">Lifestyle — Casual</figcaption>
+        </figure>
+        <figure class="card">
+          <a href="#lb-po-04"><img loading="lazy" class="thumb" src="images/portfolio/portrait-04.jpg" alt="Golden hour portrait"></a>
+          <figcaption class="figcap">Golden Hour</figcaption>
+        </figure>
+      </div>
+    </section>
+    -->
+    <!-- Closing line -->
+    <p class="quiet-line" style="margin-top:36px">Need something specific? <a href="mailto:nicks.captures.contact@gmail.com" style="color:var(--accent);text-decoration:none">Email me</a> — I’ll make it happen.</p>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Nick Vuletich. FAA Part 107.</div>
+      <div>NE Ohio • Kent</div>
+    </div>
+  </footer>
+
+  <!-- Lightboxes (duplicate per image; link target from grid) -->
+  <!-- ALL -->
+  <div id="lb-all-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/real-estate-01.jpg" alt=""></div></div>
+  <div id="lb-all-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/drone-01.jpg" alt=""></div></div>
+  <div id="lb-all-03" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-01.jpg" alt=""></div></div>
+  <div id="lb-all-04" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/real-estate-02.jpg" alt=""></div></div>
+  <div id="lb-all-05" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/drone-02.jpg" alt=""></div></div>
+  <div id="lb-all-06" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-02.jpg" alt=""></div></div>
+
+  <!-- RE -->
+  <div id="lb-re-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re1.jpg" alt=""></div></div>
+  <div id="lb-re-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re2.jpg" alt=""></div></div>
+  <div id="lb-re-03" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re3.jpg" alt=""></div></div>
+  <div id="lb-re-04" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re4.jpg" alt=""></div></div>
+  <div id="lb-re-05" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re5.jpg" alt=""></div></div>
+  <div id="lb-re-06" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re6.jpg" alt=""></div></div>
+
+  <!-- DR -->
+  <div id="lb-dr-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone1.jpg" alt=""></div></div>
+  <div id="lb-dr-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone2.jpg" alt=""></div></div>
+  <div id="lb-dr-03" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone3.jpg" alt=""></div></div>
+  <div id="lb-dr-04" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone4.jpg" alt=""></div></div>
+  <div id="lb-dr-05" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone5.jpg" alt=""></div></div>
+  <div id="lb-dr-06" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone6.jpg" alt=""></div></div>
+  <div id="lb-dr-07" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone7.jpg" alt=""></div></div>
+
+  <!-- PO -->
+  <div id="lb-po-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-01.jpg" alt=""></div></div>
+  <div id="lb-po-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-02.jpg" alt=""></div></div>
+  <div id="lb-po-03" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-03.jpg" alt=""></div></div>
+  <div id="lb-po-04" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-04.jpg" alt=""></div></div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
