@@ -1,174 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nick Vuletich — Photography & Aerials</title>
-  <meta name="description" content="Real estate, portraits, and aerial photography — Kent & NE Ohio.">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Real estate, portraits, and aerial photography — Kent & NE Ohio." />
+
+  <!-- Mobile‑first, drop‑in CSS. If you prefer an external file, copy everything
+       inside <style> into styles.css and remove this <style> tag. -->
+  <style>
+    :root{
+      --bg:#fff;
+      --text:#0e0e12;
+      --muted:#666;
+      --line:#eee;
+      --accent:#0e5cf7;
+      --shadow:0 8px 24px rgba(14,92,247,.12);
+      --radius:14px;
+      --container:clamp(960px, 92vw, 1120px); /* fluid max width */
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    img{max-width:100%; display:block; height:auto}
+    a{color:inherit}
+
+    /* Typography: fluid but bounded */
+    h1{font-size:clamp(1.8rem, 2.4rem + 1vw, 3.1rem); line-height:1.05; margin:0 0 .5rem}
+    h2{font-size:clamp(1.25rem, 1.1rem + .8vw, 1.8rem); margin:.2rem 0 .4rem}
+    h3{font-size:clamp(1.05rem, 1rem + .5vw, 1.25rem); margin:.2rem 0}
+    .lead{font-size:clamp(1rem, .95rem + .4vw, 1.15rem); color:#1a1a1f}
+    .small{font-size:.92rem; color:var(--muted)}
+    .fineprint{font-size:.85rem; color:#777}
+
+    /* Layout helpers */
+    .container{width:min(100%, var(--container)); margin-inline:auto; padding:0 16px}
+    .section{padding:44px 0}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:saturate(1.2) blur(8px); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:60px}
+    .brand{font-weight:700; letter-spacing:.2px}
+    .nav a{ text-decoration:none; color:#111; font-weight:550 }
+
+    /* Desktop nav vs. mobile menu */
+    .menu{display:none}
+    .cta{background:var(--accent); color:white; padding:.6rem .9rem; border-radius:999px; text-decoration:none}
+    .btn{display:inline-block; text-decoration:none; border-radius:999px; padding:.7rem 1rem; font-weight:600; border:1px solid #dcdce0}
+    .btn.primary{background:var(--accent); color:#fff; border-color:transparent; box-shadow:var(--shadow)}
+    .btn.ghost{background:transparent}
+
+    /* Mobile hamburger */
+    .hamburger{display:inline-flex; background:none; border:0; padding:8px; border-radius:10px}
+    .hamburger:focus{outline:2px solid #cbd5ff}
+    .hamburger svg{width:26px; height:26px}
+    .drawer{position:absolute; top:60px; left:0; right:0; background:#fff; border-bottom:1px solid var(--line); display:none; padding:10px 16px}
+    .drawer a{display:block; padding:10px 6px; text-decoration:none; color:#111; border-radius:8px}
+    .drawer a.cta{display:inline-block; margin-top:6px}
+    .drawer.open{display:block}
+
+    /* Hero */
+    .hero{position:relative; isolation:isolate}
+    .hero-media{position:relative; aspect-ratio:16/10; width:100%; overflow:hidden}
+    .hero-media img{width:100%; height:100%; object-fit:cover}
+    .overlay{position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.25) 35%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0))}
+    .hero .content{position:absolute; inset:0; display:grid; align-content:end; padding: clamp(14px, 4vw, 28px); color:#fff}
+    .hero .actions{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* Trust bar */
+    .trust{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#fafafa}
+    .trust .container{display:flex; gap:16px; justify-content:center; padding:.8rem 16px; flex-wrap:wrap; font-weight:600; color:#222}
+
+    /* Tiles */
+    .tiles{display:grid; grid-template-columns:1fr; gap:12px}
+    .tile{position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--line); text-decoration:none; color:#111; background:#fff}
+    .tile img{aspect-ratio: 4/3; object-fit:cover; transition:scale .35s ease}
+    .tile:hover img{scale:1.03}
+    .tile .t{position:absolute; left:10px; bottom:10px; right:10px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,.88); backdrop-filter:blur(6px); padding:.6rem .75rem; border-radius:12px; font-weight:600}
+
+    /* Cards (pricing) */
+    .cards{display:grid; grid-template-columns:1fr; gap:12px}
+    .card{border:1px solid #e7e7ea; border-radius:var(--radius); padding:16px; background:#fff}
+    .card .price{font-size:1.35rem; font-weight:800; color:#111; margin:.25rem 0 .35rem}
+
+    /* Addons grid */
+    .addons{display:grid; grid-template-columns:1fr; gap:10px}
+    .addon{border:1px dashed #e0e0e6; border-radius:12px; padding:12px}
+
+    /* About section */
+    .about{display:grid; gap:16px}
+    .about img{border-radius:16px; width:100%; max-width:520px; justify-self:center}
+
+    /* Contact */
+    form input, form textarea{width:100%; font:inherit}
+    form button{cursor:pointer}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line); padding:16px 0; color:#333}
+
+    /* Medium screens */
+    @media (min-width: 560px){
+      .tiles{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .addons{grid-template-columns:repeat(2,1fr)}
+      .about{grid-template-columns: 1.1fr .9fr; align-items:center}
+    }
+
+    /* Large screens */
+    @media (min-width: 960px){
+      .tiles{grid-template-columns:repeat(3,1fr)}
+      .cards{grid-template-columns:repeat(3,1fr)}
+      .addons{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* Compact header on larger screens */
+    @media (min-width: 720px){
+
+    /* Mobile nav behavior */
+    
+      .hamburger{display:inline-flex}
+      .drawer{position:absolute; top:60px; left:0; right:0; background:#fff; border-bottom:1px solid var(--line); display:none; padding:10px 16px}
+      .drawer a{display:block; padding:10px 6px; text-decoration:none; color:#111; border-radius:8px}
+      .drawer a.cta{display:inline-block; margin-top:6px}
+      .drawer.open{display:block}
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <strong>Nick Vuletich</strong>
-      <nav>
+      <strong class="brand">Nick Vuletich</strong>
+
+      <!-- Desktop menu -->
+      <nav class="menu" aria-label="Primary">
         <a href="real-estate.html">Portfolio</a>
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact" class="cta">Book</a>
       </nav>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile drawer -->
+    <div id="mobile-menu" class="drawer container" role="dialog" aria-label="Mobile menu">
+      <a href="real-estate.html">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Book</a>
     </div>
   </header>
 
-  <section class="hero">
-    <img src="images/drone1.jpg" alt="Hero">
-    <div class="overlay"></div>
-    <div class="container content">
-      <h1>Photography that moves people.</h1>
-      <p class="lead">Real estate, portraits, and aerials — captured with precision and simplicity.</p>
-      <div style="margin-top:18px;display:flex;gap:12px">
-        <a class="btn primary" href="#contact">Book a Shoot</a>
-        <a class="btn ghost" href="real-estate.html">View Portfolio</a>
+  <section class="hero" aria-label="Hero">
+    <div class="hero-media">
+      <img src="images/drone1.jpg" alt="Drone shot over Ohio neighborhood" loading="eager"/>
+      <div class="overlay" aria-hidden="true"></div>
+      <div class="container content">
+        <div>
+          <h1>Photography that moves people.</h1>
+          <p class="lead">Real estate, portraits, and aerials — captured with precision and simplicity.</p>
+          <div class="actions" style="margin-top:14px">
+            <a class="btn primary" href="#contact">Book a Shoot</a>
+            <a class="btn ghost" href="real-estate.html">View Portfolio</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="trust">
+  <section class="trust" aria-label="Credentials">
     <div class="container">
       <span>FAA Part 107</span>
       <span>3+ Years Shooting</span>
-      <!-- <span>5★ Reviews</span> -->
       <span>NE Ohio • Kent</span>
     </div>
   </section>
 
-  <section id="portfolio" class="section">
+  <section id="portfolio" class="section" aria-label="Featured Work">
     <div class="container">
       <h2 style="margin:0 0 8px">Featured Work</h2>
-      <p class="small">Curated tiles — click to view full gallery later.</p>
-      <div class="tiles" style="margin-top:18px">
+      <div class="tiles" style="margin-top:14px">
         <a class="tile" href="real-estate.html">
-          <img src="images/re2.jpg" alt="Real Estate">
+          <img src="images/re2.jpg" alt="Real Estate" loading="lazy"/>
           <div class="t"><strong>Real Estate</strong><span style="color:var(--accent)">View →</span></div>
         </a>
         <a class="tile" href="real-estate.html">
-          <img src="images/drone4.jpg" alt="Drone">
+          <img src="images/drone4.jpg" alt="Drone" loading="lazy"/>
           <div class="t"><strong>Drone</strong><span style="color:var(--accent)">View →</span></div>
         </a>
         <a class="tile" href="portraits.html">
-          <img src="images/NMV08136.jpg" alt="Portraits">
+          <img src="images/NMV08136.jpg" alt="Portraits" loading="lazy"/>
           <div class="t"><strong>Portraits</strong><span style="color:var(--accent)">View →</span></div>
         </a>
       </div>
     </div>
   </section>
 
-  <section id="services" class="section" style="background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <section id="services" class="section" style="background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee" aria-label="Services & Pricing">
     <div class="container">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
         <h2 style="margin:0">Services & Pricing</h2>
         <a class="small" href="#contact" style="color:var(--accent);text-decoration:none">Request full pricing →</a>
       </div>
-      <div class="cards" style="margin-top:18px">
+      <div class="cards" style="margin-top:14px">
         <div class="card">
-          <h3>Drone-Only</h3>
+          <h3>Drone‑Only</h3>
           <div class="price">$90</div>
           <ul>
-            <li>A curated set of high-quality aerial photos</li>
+            <li>A curated set of high‑quality aerial photos</li>
             <li>FAA Part 107 certified</li>
-            <li>Next-day delivery</li>
+            <li>Next‑day delivery</li>
           </ul>
         </div>
       
         <div class="card">
           <h3>Interior/Exterior Only</h3>
-          <div class="price">
-            <strong>Starting at $175</strong>
-          </div>
+          <div class="price"><strong>Starting at $175</strong></div>
           <ul>
             <li>A full set of professionally edited photos showcasing the entire property</li>
             <li>MLS/Web ready</li>
-            <!-- <li>Next-day delivery</li> -->
-            <li>
-              <strong>Pricing by size:</strong><br>
-              - Up to 2,500 sq ft → $175<br>
-              - 2,500-4,000 sq ft → $225<br>
-              - 4,000+ sq ft → $300+
+            <li><strong>Pricing by size:</strong><br>
+              Up to 2,500 sq ft → $175<br>
+              2,500–4,000 sq ft → $225<br>
+              4,000+ sq ft → $300+
             </li>
           </ul>
         </div>
       
-        <div class="card" style="border-color:var(--accent);box-shadow:0 8px 24px rgba(14,92,247,.12)">
+        <div class="card" style="border-color:var(--accent); box-shadow:var(--shadow)">
           <h3>Full Package</h3>
           <div class="small" style="margin:-4px 0 8px;color:#666">Drone + Interior/Exterior</div>
-          <div class="price">
-            <strong>Starting at $275</strong>
-          </div>
+          <div class="price"><strong>Starting at $275</strong></div>
           <ul>
             <li>Comprehensive coverage with all the key angles and highlights</li>
             <li>Highlights + setting</li>
-            <!-- <li>Next-day delivery</li> -->
-            <li>
-              <strong>Pricing by size:</strong><br>
-              - Up to 2,500 sq ft → $275<br>
-              - 2,500-4,000 sq ft → $325<br>
-              - 4,000+ sq ft → $425+
+            <li><strong>Pricing by size:</strong><br>
+              Up to 2,500 sq ft → $275<br>
+              2,500–4,000 sq ft → $325<br>
+              4,000+ sq ft → $425+
             </li>
           </ul>
         </div>
       </div>
-      
 
-      <h3 style="margin:28px 0 8px">Add-Ons</h3>
+      <h3 style="margin:28px 0 8px">Add‑Ons</h3>
       <div class="addons">
         <div class="addon"><strong>Twilight shoot</strong><br><span class="small">+$75</span></div>
         <div class="addon">
-          <strong>Drone Rush turnaround (same-day)</strong><br>
+          <strong>Drone Rush turnaround (same‑day)</strong><br>
           <span class="small">+$25</span>
           <div class="fineprint">Available for shoots booked before 3:00 PM. Delivery speed may vary based on project size and schedule.</div>
         </div>
-        
         <div class="addon">
-          <strong>Interior/Exterior Rush turnaround (same-day)</strong><br>
+          <strong>Interior/Exterior Rush turnaround (same‑day)</strong><br>
           <span class="small">+$75</span>
           <div class="fineprint">Available for shoots booked before 3:00 PM. Delivery speed may vary based on project size and schedule.</div>
-        </div>        
+        </div>
         <div class="addon"><strong>Travel outside NE Ohio</strong><br><span class="small">Quote</span></div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="section">
+  <section id="about" class="section" aria-label="About">
     <div class="container about">
       <div>
         <h2 style="margin-top:0">I'm Nick Vuletich.</h2>
-        <p>Kent-based photographer and FAA-certified drone pilot. I capture properties, people, and places with one goal: make every shot feel alive.</p>
+        <p>Kent‑based photographer and FAA‑certified drone pilot. I capture properties, people, and places with one goal: make every shot feel alive.</p>
         <ul class="small">
-          <li>Sony A7 IV • Sigma 24-70 • Sigma 150-600</li>
+          <li>Sony A7 IV • Sigma 24‑70 • Sigma 150‑600</li>
           <li>DJI Air 3S • Ronin RS3</li>
           <li>FAA Part 107 certified</li>
         </ul>
-        <p class="small">Reliable communication, on-time shoots, and quick turnaround on edited photos.</p>
+        <p class="small">Reliable communication, on‑time shoots, and quick turnaround on edited photos.</p>
       </div>
-      <img src="images/NMV02492.jpg" alt="Nick">
+      <img src="images/NMV02492.jpg" alt="Nick portrait" loading="lazy" />
     </div>
   </section>
 
-  <section id="contact" class="section" style="background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee">
+  <section id="contact" class="section" style="background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee" aria-label="Contact / Book">
     <div class="container">
       <h2 style="margin:0 0 12px">Contact / Book</h2>
       <p class="small">You can email me at nicks.captures.contact@gmail.com or fill out the form below.</p>
       <p class="small">Tell me what you need and when. I'll reply with availability and next steps.</p>
       <form action="https://formspree.io/f/xdkgkgaq" method="POST" style="max-width:560px;margin-top:16px;display:grid;gap:12px">
-        <input name="name" required placeholder="Name" style="padding:12px;border-radius:12px;border:1px solid #ddd">
-        <input name="email" required type="email" placeholder="Email" style="padding:12px;border-radius:12px;border:1px solid #ddd">
-        <input name="subject" placeholder="Subject" style="padding:12px;border-radius:12px;border:1px solid #ddd">
+        <input name="name" required placeholder="Name" style="padding:12px;border-radius:12px;border:1px solid #ddd"/>
+        <input name="email" required type="email" placeholder="Email" style="padding:12px;border-radius:12px;border:1px solid #ddd"/>
+        <input name="subject" placeholder="Subject" style="padding:12px;border-radius:12px;border:1px solid #ddd"/>
         <textarea name="message" rows="6" placeholder="What are you looking for? Dates? Location?" style="padding:12px;border-radius:12px;border:1px solid #ddd"></textarea>
-        <div style="display:flex;gap:10px;align-items:center">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <button class="btn primary" type="submit">Send</button>
           <a class="btn ghost" href="mailto:nick@nickvuletich.com">Email me</a>
         </div>
-        <!-- <p class="small">Prefer a call? <a href="https://calendly.com/your-handle" style="color:var(--accent);text-decoration:none">Schedule here</a>.</p> -->
       </form>
     </div>
   </section>
@@ -181,7 +314,28 @@
   </footer>
 
   <script>
+    // Year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile drawer toggle
+    const btn = document.querySelector('.hamburger');
+    const drawer = document.getElementById('mobile-menu');
+    if (btn && drawer){
+      btn.addEventListener('click', () => {
+        const open = drawer.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close drawer when clicking a link
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
+        drawer.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    // Optional: enable smooth scroll for same‑page anchors
+    if ('scrollBehavior' in document.documentElement.style){
+      document.documentElement.style.scrollBehavior = 'smooth';
+    }
   </script>
 </body>
 </html>
