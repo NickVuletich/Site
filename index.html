@@ -103,28 +103,18 @@
       </div>
 
       <div class="shell project-list">
-        <article class="project-row">
-          <div class="project-visual rocky-evidence" aria-label="Rocky engineering focus">
-            <!-- Replace with sanitized architecture, test output, or telemetry evidence when approved for public use. -->
-            <div class="visual-label"><span>Engineering evidence</span><span>Serving · validation · observability</span></div>
-            <ol>
-              <li><span>01</span><strong>Serve</strong><small>Model behavior</small></li>
-              <li><span>02</span><strong>Validate</strong><small>API + parser</small></li>
-              <li><span>03</span><strong>Observe</strong><small>Telemetry</small></li>
-              <li><span>04</span><strong>Test</strong><small>Reliability</small></li>
-            </ol>
-          </div>
+        <article class="project-row project-row--compact">
           <div class="project-copy">
             <p class="project-number">01 / Flagship system</p>
             <h3>Rocky</h3>
             <p class="project-subtitle">Kent State University LLM Platform</p>
-            <p>Contributed to LLM serving behavior, API validation, telemetry, testing, and production reliability for Kent State University’s internal AI chat platform.</p>
-            <dl class="project-specs">
-              <div><dt>Year / status</dt><dd>2026 · University AI Experience</dd></div>
-              <div><dt>Core stack</dt><dd>Python · Ollama · LLM Infrastructure</dd></div>
-              <div><dt>Focus</dt><dd>Telemetry · Testing · Production Reliability</dd></div>
+            <p>Contributed to model-serving behavior and reliability work for Kent State University’s internal AI chat platform.</p>
+            <dl class="project-specs project-specs--proof">
+              <div><dt>Integration</dt><dd>LLM behavior · API and parser validation</dd></div>
+              <div><dt>Reliability</dt><dd>Telemetry · Automated testing</dd></div>
             </dl>
             <p class="project-note">Internal systems and source remain private.</p>
+            <!-- Add only approved, sanitized Rocky evidence here when it is available for public use. -->
           </div>
         </article>
 
@@ -194,27 +184,18 @@
           </div>
         </article>
 
-        <article class="project-row project-row--reverse">
+        <article class="project-row project-row--compact project-row--supporting">
           <div class="project-copy">
             <p class="project-number">04 / Local AI</p>
             <h3>SourceRecall</h3>
             <p class="project-subtitle">Local Retrieval-Augmented Generation</p>
             <p>A local RAG system for document ingestion, embedding generation, vector retrieval, source grounding, and local model inference.</p>
-            <dl class="project-specs">
-              <div><dt>Status</dt><dd>Prototype · Interface Under Review</dd></div>
-              <div><dt>Core stack</dt><dd>Python · ChromaDB · Ollama</dd></div>
-              <div><dt>Focus</dt><dd>Embeddings · Retrieval-Augmented Generation · Local AI</dd></div>
+            <dl class="project-specs project-specs--proof">
+              <div><dt>Core stack</dt><dd>Python · ChromaDB · Sentence Transformers · Ollama</dd></div>
+              <div><dt>Focus</dt><dd>Local RAG</dd></div>
             </dl>
-          </div>
-          <div class="project-visual rag-evidence" aria-label="SourceRecall retrieval pipeline">
-            <div class="visual-label"><span>Retrieval path</span><span>Local inference</span></div>
-            <ol>
-              <li><span>01</span><strong>Ingest</strong></li>
-              <li><span>02</span><strong>Embed</strong></li>
-              <li><span>03</span><strong>Retrieve</strong></li>
-              <li><span>04</span><strong>Ground</strong></li>
-              <li><span>05</span><strong>Respond</strong></li>
-            </ol>
+            <p class="project-note">Prototype; the interface remains under review.</p>
+            <!-- Future real evidence location: sanitized CLI retrieval trace. -->
           </div>
         </article>
       </div>
@@ -249,40 +230,19 @@
     </section>
 
     <section class="lab-section" id="lab" aria-labelledby="lab-title">
-      <div class="shell section-intro">
-        <p class="section-label">The Lab</p>
-        <div>
-          <h2 id="lab-title">Study the fundamentals. Build the intuition.</h2>
-          <p>Working notes and experiments that make complex systems easier to understand and build.</p>
-        </div>
-      </div>
-      <div class="shell lab-list">
-        <article>
-          <span class="lab-number" aria-hidden="true">01</span>
-          <div><p class="project-number">Learning Build</p><h3>Transformer From Scratch</h3></div>
-          <p>Exploring attention, multi-head attention, transformer blocks, and language-model fundamentals from first principles.</p>
-        </article>
-        <article>
-          <span class="lab-number" aria-hidden="true">02</span>
-          <div><p class="project-number">Evolving Notes</p><h3>AI/ML Field Guide</h3></div>
-          <p>An evolving collection of notes and visual explanations covering mathematics, machine learning, and model architecture.</p>
-        </article>
-        <article>
-          <span class="lab-number" aria-hidden="true">03</span>
-          <div><p class="project-number">Experiment in Progress</p><h3>Current Experiment</h3></div>
-          <p>A protected space for the next technical question—clearly evolving, deliberately unfinished, and documented as it develops.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="mission-section" aria-labelledby="mission-title">
-      <div class="shell mission-grid">
-        <div class="mission-mark" aria-hidden="true"><span>NASA</span><strong>POWER</strong></div>
-        <div>
-          <p class="section-label">Research Direction · Planning · Next Build</p>
-          <h2 id="mission-title">Next Mission</h2>
-          <p class="mission-lead">Exploring how NASA POWER weather and environmental data can support an applied AI system involving forecasting, learning, or environmental insight.</p>
-          <p>This is a future research direction—not a finished, trained, deployed, or validated product.</p>
+      <div class="shell lab-shell">
+        <h2 id="lab-title">Lab</h2>
+        <div class="lab-list">
+          <article>
+            <span class="lab-number" aria-hidden="true">01</span>
+            <div><p class="project-number">Learning Build</p><h3>Transformer From Scratch</h3></div>
+            <p>Exploring attention, multi-head attention, transformer blocks, and language-model fundamentals from first principles.</p>
+          </article>
+          <article>
+            <span class="lab-number" aria-hidden="true">02</span>
+            <div><p class="project-number">Evolving Notes</p><h3>AI/ML Field Guide</h3></div>
+            <p>Evolving technical notes covering linear algebra, machine learning, neural-network architecture, and model fundamentals.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -290,15 +250,11 @@
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="shell about-grid">
         <div>
-          <p class="section-label">About</p>
-          <h2 id="about-title">Ideas become useful when the whole system works.</h2>
+          <h2 id="about-title">About</h2>
         </div>
         <div class="about-copy">
-          <p>I’m most interested in turning ambitious ideas into complete products: the model, the software around it, the tests that make it trustworthy, and the interface that makes it useful.</p>
-          <p>My path through Kent State connects AI and engineering with mathematical foundations, space and Earth observation, and technology built for meaningful missions. Photography adds another discipline—visual storytelling, careful observation, and attention to the details people actually experience.</p>
-          <ul class="theme-list" aria-label="Core themes">
-            <li>Complete systems</li><li>Meaningful missions</li><li>Visual storytelling</li>
-          </ul>
+          <p>I’m a Kent State Computer Science student focused on AI/ML and software engineering. I like building complete systems—the model, backend, tests, and interface—so technical ideas become useful, reliable tools.</p>
+          <p>Photography sharpens how I observe, frame problems, and communicate visually, while space and Earth-observation interests guide me toward meaningful technical work.</p>
         </div>
       </div>
     </section>
@@ -326,7 +282,6 @@
             <span>Email</span>
             <a href="mailto:nickvuletich23@gmail.com">nickvuletich23@gmail.com</a>
           </div>
-          <p class="contact-note">Résumé access will be added when the verified PDF is available.</p>
         </div>
 
         <form class="contact-form" action="https://formspree.io/f/xdkgkgaq" method="POST">
