@@ -119,6 +119,35 @@
       });
     }
 
+    document.querySelectorAll("[data-horizontal-evidence]").forEach((evidence) => {
+      evidence.addEventListener("keydown", (event) => {
+        if (evidence.scrollWidth <= evidence.clientWidth + 1) return;
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const maximum = evidence.scrollWidth - evidence.clientWidth;
+        const step = Math.max(evidence.clientWidth * 0.8, 280);
+        let target;
+
+        if (event.key === "ArrowRight") {
+          target = Math.min(maximum, evidence.scrollLeft + step);
+        } else if (event.key === "ArrowLeft") {
+          target = Math.max(0, evidence.scrollLeft - step);
+        } else if (event.key === "Home") {
+          target = 0;
+        } else if (event.key === "End") {
+          target = maximum;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        evidence.scrollTo({
+          left: target,
+          behavior: reducedMotion ? "auto" : "smooth"
+        });
+      });
+    });
+
     document.querySelectorAll("[data-year]").forEach((year) => {
       year.textContent = String(new Date().getFullYear());
     });

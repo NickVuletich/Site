@@ -15,7 +15,7 @@
   <meta name="twitter:description" content="Building intelligent systems from model to deployment.">
   <meta id="theme-color" name="theme-color" content="#f5f7f8">
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js?v=orbital-evidence" defer></script>
+  <script src="script.js?v=keepwise-evidence" defer></script>
 </head>
 <body class="portfolio-home" id="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -171,26 +171,41 @@
         </article>
 
         <article class="project-row">
-          <div class="project-visual keepwise-evidence" aria-label="Keepwise application screenshot region">
-            <!-- Replace neutral application frame with verified Keepwise screenshots. -->
-            <div class="app-frame" aria-hidden="true">
-              <div class="app-bar"><span></span><span>Keepwise / Library</span></div>
-              <div class="app-layout">
-                <div class="app-sidebar"><i></i><i></i><i></i><i></i></div>
-                <div class="app-content"><span>INDEX</span><span>COMPARE</span><span>REVIEW</span></div>
-              </div>
+          <div class="project-visual keepwise-evidence" aria-label="Keepwise product evidence">
+            <div class="visual-label"><span>Product evidence</span><span>macOS · local-first</span></div>
+            <div class="keepwise-primary-scroll" tabindex="0" data-horizontal-evidence aria-label="Scrollable Keepwise exact-copy review interface">
+              <figure class="keepwise-primary-evidence">
+                <img src="images/projects/keepwise/exact-review.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Keepwise demonstration interface with generated data showing two byte-for-byte duplicate photos side by side, a preferred copy, and Keep, Maybe, and Reject review controls">
+                <figcaption><span>Side-by-side exact-copy review</span><strong>UI demo · Generated data</strong></figcaption>
+              </figure>
             </div>
+            <p class="keepwise-evidence-cue">Swipe or use arrow keys for interface detail →</p>
+            <figure class="keepwise-safeguard-evidence">
+              <img src="images/projects/keepwise/all-copies-safeguard.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Keepwise demonstration safety dialog with generated data warning that rejecting every copy would leave no retained copy">
+              <figcaption><span>Retained-copy safety guard</span><strong>UI demo · Generated data</strong></figcaption>
+            </figure>
           </div>
           <div class="project-copy">
             <p class="project-number">03 / Local-first software</p>
             <h3>Keepwise</h3>
-            <p class="project-subtitle">Local Photo Review Application</p>
-            <p>A local-first desktop application for reviewing duplicate and similar photographs using image indexing, metadata processing, hashing, and keyboard-driven workflows.</p>
+            <p class="project-subtitle">Local-First Exact Duplicate Review</p>
+            <p>A local-first macOS photo-review prototype that finds byte-for-byte duplicates using size bucketing and streaming SHA-256. Rust owns filesystem access, hashing, persistence, and safety boundaries. Keepwise stores Libraries, immutable Scan history, duplicate groups, and review decisions in SQLite while keeping source photographs read-only.</p>
             <dl class="project-specs">
-              <div><dt>Year / status</dt><dd>2026 · Active Development · v0.7</dd></div>
-              <div><dt>Application</dt><dd>Rust · Tauri · Svelte · SQLite</dd></div>
-              <div><dt>Focus</dt><dd>Image Processing · Local-First Software</dd></div>
+              <div><dt>Year / status</dt><dd>2026 · Functional Prototype</dd></div>
+              <div><dt>Platform</dt><dd>macOS · Tauri 2</dd></div>
+              <div><dt>Core</dt><dd>Rust</dd></div>
+              <div><dt>Interface</dt><dd>Svelte 5 · TypeScript</dd></div>
+              <div><dt>Storage</dt><dd>SQLite</dd></div>
+              <div><dt>Matching</dt><dd>Byte size · Streaming SHA-256</dd></div>
+              <div><dt>Safety</dt><dd>Read-only source libraries</dd></div>
             </dl>
+            <div class="keepwise-proof" aria-label="Keepwise validation proof points">
+              <div><strong>126</strong><span>Current frontend and Rust tests passing</span></div>
+              <div><strong>10,000</strong><span>Files in a disposable synthetic validation corpus</span></div>
+            </div>
+            <p class="keepwise-benchmark-note">Synthetic generated-file benchmark on one arm64 macOS system.</p>
+            <p class="project-note">Exact copies only. Visual similarity and source-file cleanup execution are not implemented.</p>
+            <!-- Future Keepwise case study: retain Milestone 1.7 and include a truthful Development Process section stating that Nick originated and directed the product; led requirements, architecture decisions, review, and validation; personally implemented selected parts; and Codex substantially accelerated implementation and streamlining. Future CTA location: View Keepwise Case Study. -->
           </div>
         </article>
 
