@@ -1,340 +1,394 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nick Vuletich — Photography & Aerials</title>
-  <meta name="description" content="Real estate, portraits, and aerial photography — Kent & NE Ohio." />
-
-  <!-- Mobile‑first, drop‑in CSS. If you prefer an external file, copy everything
-       inside <style> into styles.css and remove this <style> tag. -->
-  <style>
-    :root{
-      --bg:#fff;
-      --text:#0e0e12;
-      --muted:#666;
-      --line:#eee;
-      --accent:#0e5cf7;
-      --shadow:0 8px 24px rgba(14,92,247,.12);
-      --radius:14px;
-      --container:clamp(960px, 92vw, 1120px); /* fluid max width */
-    }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-    img{max-width:100%; display:block; height:auto}
-    a{color:inherit}
-
-    /* Typography: fluid but bounded */
-    h1{font-size:clamp(1.8rem, 2.4rem + 1vw, 3.1rem); line-height:1.05; margin:0 0 .5rem}
-    h2{font-size:clamp(1.25rem, 1.1rem + .8vw, 1.8rem); margin:.2rem 0 .4rem}
-    h3{font-size:clamp(1.05rem, 1rem + .5vw, 1.25rem); margin:.2rem 0}
-    .lead{font-size:clamp(1rem, .95rem + .4vw, 1.15rem); color:#1a1a1f}
-    .small{font-size:.92rem; color:var(--muted)}
-    .fineprint{font-size:.85rem; color:#777}
-
-    /* Layout helpers */
-    .container{width:min(100%, var(--container)); margin-inline:auto; padding:0 16px}
-    .section{padding:44px 0}
-
-    /* Header */
-    header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:saturate(1.2) blur(8px); border-bottom:1px solid var(--line)}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:60px}
-    .brand{font-weight:700; letter-spacing:.2px}
-    .nav a{ text-decoration:none; color:#111; font-weight:550 }
-
-    /* Desktop nav vs. mobile menu */
-    .menu{display:none}
-    .cta{background:var(--accent); color:white; padding:.6rem .9rem; border-radius:999px; text-decoration:none}
-    .btn{display:inline-block; text-decoration:none; border-radius:999px; padding:.7rem 1rem; font-weight:600; border:1px solid #dcdce0}
-    .btn.primary{background:var(--accent); color:#fff; border-color:transparent; box-shadow:var(--shadow)}
-    .btn.ghost{background:transparent}
-
-    /* Mobile hamburger */
-    .hamburger{display:inline-flex; background:none; border:0; padding:8px; border-radius:10px}
-    .hamburger:focus{outline:2px solid #cbd5ff}
-    .hamburger svg{width:26px; height:26px}
-    .drawer{position:absolute; top:60px; left:0; right:0; background:#fff; border-bottom:1px solid var(--line); display:none; padding:10px 16px}
-    .drawer a{display:block; padding:10px 6px; text-decoration:none; color:#111; border-radius:8px}
-    .drawer a.cta{display:inline-block; margin-top:6px}
-    .drawer.open{display:block}
-
-    /* Hero */
-    .hero{position:relative; isolation:isolate}
-    .hero-media{position:relative; aspect-ratio:16/10; width:100%; overflow:hidden}
-    .hero-media img{width:100%; height:100%; object-fit:cover}
-    .overlay{position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.25) 35%, rgba(0,0,0,.15) 55%, rgba(0,0,0,0))}
-    .hero .content{position:absolute; inset:0; display:grid; align-content:end; padding: clamp(14px, 4vw, 28px); color:#fff}
-    .hero .actions{display:flex; gap:12px; flex-wrap:wrap}
-
-    /* Trust bar */
-    .trust{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:#fafafa}
-    .trust .container{display:flex; gap:16px; justify-content:center; padding:.8rem 16px; flex-wrap:wrap; font-weight:600; color:#222}
-
-    /* Tiles */
-    .tiles{display:grid; grid-template-columns:1fr; gap:12px}
-    .tile{position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--line); text-decoration:none; color:#111; background:#fff}
-    .tile img{aspect-ratio: 4/3; object-fit:cover; transition:scale .35s ease}
-    .tile:hover img{scale:1.03}
-    .tile .t{position:absolute; left:10px; bottom:10px; right:10px; display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,.88); backdrop-filter:blur(6px); padding:.6rem .75rem; border-radius:12px; font-weight:600}
-
-    /* Cards (pricing) */
-    .cards{display:grid; grid-template-columns:1fr; gap:12px}
-    .card{border:1px solid #e7e7ea; border-radius:var(--radius); padding:16px; background:#fff}
-    .card .price{font-size:1.35rem; font-weight:800; color:#111; margin:.25rem 0 .35rem}
-
-    /* Addons grid */
-    .addons{display:grid; grid-template-columns:1fr; gap:10px}
-    .addon{border:1px dashed #e0e0e6; border-radius:12px; padding:12px}
-
-    /* About section */
-    .about{display:grid; gap:16px}
-    .about img{border-radius:16px; width:100%; max-width:520px; justify-self:center}
-
-    /* Contact */
-    form input, form textarea{width:100%; font:inherit}
-    form button{cursor:pointer}
-
-    /* Footer */
-    footer{border-top:1px solid var(--line); padding:16px 0; color:#333}
-
-    /* Medium screens */
-    @media (min-width: 560px){
-      .tiles{grid-template-columns:repeat(2,1fr)}
-      .cards{grid-template-columns:repeat(2,1fr)}
-      .addons{grid-template-columns:repeat(2,1fr)}
-      .about{grid-template-columns: 1.1fr .9fr; align-items:center}
-    }
-
-    /* Large screens */
-    @media (min-width: 960px){
-      .tiles{grid-template-columns:repeat(3,1fr)}
-      .cards{grid-template-columns:repeat(3,1fr)}
-      .addons{grid-template-columns:repeat(3,1fr)}
-    }
-
-    /* Compact header on larger screens */
-    @media (min-width: 720px){
-
-    /* Mobile nav behavior */
-    
-      .hamburger{display:inline-flex}
-      .drawer{position:absolute; top:60px; left:0; right:0; background:#fff; border-bottom:1px solid var(--line); display:none; padding:10px 16px}
-      .drawer a{display:block; padding:10px 6px; text-decoration:none; color:#111; border-radius:8px}
-      .drawer a.cta{display:inline-block; margin-top:6px}
-      .drawer.open{display:block}
-    }
-    .lead { color: #111; }   /* any hex/rgb/hsl works */
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nick Vuletich — AI/ML Engineer &amp; Software Developer</title>
+  <meta name="description" content="Nick Vuletich is a Computer Science student building applied AI systems across machine learning, computer vision, LLM infrastructure, backend software, testing, and deployment.">
+  <link rel="canonical" href="https://nickvuletich.com/">
+  <meta property="og:title" content="Nick Vuletich — AI/ML Engineer &amp; Software Developer">
+  <meta property="og:description" content="Building intelligent systems from model to deployment.">
+  <meta property="og:url" content="https://nickvuletich.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nick Vuletich — AI/ML Engineer &amp; Software Developer">
+  <meta name="twitter:description" content="Building intelligent systems from model to deployment.">
+  <meta id="theme-color" name="theme-color" content="#f5f7f8">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js?v=orbital-evidence" defer></script>
 </head>
-<body>
-  <header>
-    <div class="container nav">
-      <strong class="brand">Nick Vuletich</strong>
+<body class="portfolio-home" id="home">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-      <!-- Desktop menu -->
-      <nav class="menu" aria-label="Primary">
-        <a href="real-estate.html">Portfolio</a>
-        <a href="#services">Services</a>
+  <header class="site-header" data-site-header>
+    <div class="shell nav-shell">
+      <a class="brand" href="#home" aria-label="Nick Vuletich, home">
+        <span class="brand-mark" aria-hidden="true">NV</span>
+        <span class="brand-copy">
+          <strong>Nick Vuletich</strong>
+          <span>AI/ML + Software</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
+        <span class="sr-only">Open navigation</span>
+        <span class="nav-toggle-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary" data-navigation>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#lab">Lab</a>
+        <a href="#experience">Experience &amp; Education</a>
         <a href="#about">About</a>
-        <a href="#contact" class="cta">Book</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <!-- Mobile hamburger -->
-      <button class="hamburger" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-    <!-- Mobile drawer -->
-    <div id="mobile-menu" class="drawer container" role="dialog" aria-label="Mobile menu">
-      <a href="real-estate.html">Portfolio</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="cta">Book</a>
+      <div class="nav-actions">
+        <!-- Résumé control intentionally omitted until a verified PDF exists. -->
+        <button class="theme-toggle icon-button" type="button" data-theme-toggle aria-label="Switch color theme">
+          <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+          <span class="sr-only">Theme</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <section class="hero" aria-label="Hero">
-    <div class="hero-media">
-      <img src="images/drone1.jpg" alt="Drone shot over Ohio neighborhood" loading="eager"/>
-      <div class="overlay" aria-hidden="true"></div>
-      <div class="container content">
-        <div>
-          <h1>Photography that moves people.</h1>
-          <p class="lead">Real estate, portraits, and aerials — captured with precision and simplicity.</p>
-          <div class="actions" style="margin-top:14px">
-            <a class="btn primary" href="#contact">Book a Shoot</a>
-            <a class="btn ghost" href="real-estate.html">View Portfolio</a>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="professional-identity">AI/ML Engineer &amp; Software Developer</p>
+          <h1 id="hero-title">Building intelligent systems <span>from model to deployment.</span></h1>
+          <p class="hero-intro">I’m a Computer Science student at Kent State University graduating in May 2027. I build applied AI systems across the full stack—from model development and computer vision to LLM infrastructure, backend software, testing, and deployment.</p>
+          <p class="availability"><span aria-hidden="true"></span> AI/ML Engineering Intern at Kent State · Summer 2026</p>
+
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button button--primary" href="#projects">View Projects <span aria-hidden="true">↓</span></a>
+            <a class="button button--secondary" href="#contact">Contact Me</a>
+          </div>
+
+          <div class="hero-links" aria-label="Professional links">
+            <a href="https://github.com/NickVuletich">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/nicholas-vuletich-b5507a321/">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="trust" aria-label="Credentials">
-    <div class="container">
-      <span>FAA Part 107</span>
-      <span>3+ Years Shooting</span>
-      <span>NE Ohio • Kent</span>
-    </div>
-  </section>
+        <aside class="hero-composition" aria-label="Portrait and OrbitalVision preview area">
+          <figure class="portrait-panel">
+            <picture>
+              <source srcset="images/site/nick-portrait-480.webp 480w, images/site/nick-portrait-800.webp 800w" sizes="(max-width: 900px) 92vw, 27vw" type="image/webp">
+              <img src="images/NMV02492.jpg" width="800" height="1200" alt="Portrait of Nick Vuletich in a wooded setting">
+            </picture>
+            <figcaption><strong>Nick Vuletich</strong><span>Kent, Ohio</span></figcaption>
+          </figure>
 
-  <section id="portfolio" class="section" aria-label="Featured Work">
-    <div class="container">
-      <h2 style="margin:0 0 8px">Featured Work</h2>
-      <div class="tiles" style="margin-top:14px">
-        <a class="tile" href="real-estate.html">
-          <img src="images/re2.jpg" alt="Real Estate" loading="lazy"/>
-          <div class="t"><strong>Real Estate</strong><span style="color:var(--accent)">View →</span></div>
-        </a>
-        <a class="tile" href="real-estate.html">
-          <img src="images/drone4.jpg" alt="Drone" loading="lazy"/>
-          <div class="t"><strong>Drone</strong><span style="color:var(--accent)">View →</span></div>
-        </a>
-        <a class="tile" href="portraits.html">
-          <img src="images/NMV08136.jpg" alt="Portraits" loading="lazy"/>
-          <div class="t"><strong>Portraits</strong><span style="color:var(--accent)">View →</span></div>
-        </a>
+          <div class="orbital-reserve" aria-label="OrbitalVision input and mask comparison">
+            <div class="visual-label"><span>OrbitalVision</span><span>TinyUNet · binary segmentation</span></div>
+            <figure class="orbital-hero-figure">
+              <img src="images/projects/orbitalvision/test-prediction.webp" width="1800" height="467" loading="eager" fetchpriority="high" decoding="async" alt="Four-panel OrbitalVision visualization showing an input satellite image, ground-truth building mask, probability heatmap, and predicted binary mask">
+            </figure>
+          </div>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services" class="section" style="background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee" aria-label="Services & Pricing">
-    <div class="container">
-      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <h2 style="margin:0">Services & Pricing</h2>
-        <a class="small" href="#contact" style="color:var(--accent);text-decoration:none">Request full pricing →</a>
+    <section class="projects-section" id="projects" aria-labelledby="projects-title">
+      <div class="shell section-intro">
+        <p class="section-label">Selected work</p>
+        <div>
+          <h2 id="projects-title">Systems built across the AI stack.</h2>
+          <p>Selected work spanning LLM infrastructure, computer vision, local-first product engineering, and retrieval systems.</p>
+        </div>
       </div>
-      <div class="cards" style="margin-top:14px">
-        <div class="card">
-          <h3>Drone‑Only</h3>
-          <div class="price">$90</div>
-          <ul>
-            <li>A curated set of high‑quality aerial photos</li>
-            <li>FAA Part 107 certified</li>
-            <li>Next‑day delivery</li>
+
+      <div class="shell project-list">
+        <article class="project-row">
+          <div class="project-visual rocky-evidence" aria-label="Rocky engineering focus">
+            <!-- Replace with sanitized architecture, test output, or telemetry evidence when approved for public use. -->
+            <div class="visual-label"><span>Engineering evidence</span><span>Serving · validation · observability</span></div>
+            <ol>
+              <li><span>01</span><strong>Serve</strong><small>Model behavior</small></li>
+              <li><span>02</span><strong>Validate</strong><small>API + parser</small></li>
+              <li><span>03</span><strong>Observe</strong><small>Telemetry</small></li>
+              <li><span>04</span><strong>Test</strong><small>Reliability</small></li>
+            </ol>
+          </div>
+          <div class="project-copy">
+            <p class="project-number">01 / Flagship system</p>
+            <h3>Rocky</h3>
+            <p class="project-subtitle">Kent State University LLM Platform</p>
+            <p>Contributed to LLM serving behavior, API validation, telemetry, testing, and production reliability for Kent State University’s internal AI chat platform.</p>
+            <dl class="project-specs">
+              <div><dt>Year / status</dt><dd>2026 · University AI Experience</dd></div>
+              <div><dt>Core stack</dt><dd>Python · Ollama · LLM Infrastructure</dd></div>
+              <div><dt>Focus</dt><dd>Telemetry · Testing · Production Reliability</dd></div>
+            </dl>
+            <p class="project-note">Internal systems and source remain private.</p>
+          </div>
+        </article>
+
+        <article class="project-row project-row--reverse">
+          <div class="project-copy">
+            <p class="project-number">02 / Computer vision</p>
+            <h3>OrbitalVision</h3>
+            <p class="project-subtitle">Aerial Building Footprint Segmentation</p>
+            <p>A PyTorch semantic-segmentation project that trains a custom TinyUNet encoder-decoder to predict building footprints from Massachusetts satellite imagery. The end-to-end pipeline covers paired image and mask loading, training, checkpoint selection, evaluation, and prediction visualization.</p>
+            <dl class="project-specs">
+              <div><dt>Year / status</dt><dd>2026 · Working v1 Baseline</dd></div>
+              <div><dt>Model</dt><dd>TinyUNet · Encoder/decoder · Skip connections</dd></div>
+              <div><dt>Framework</dt><dd>Python · PyTorch</dd></div>
+              <div><dt>Training</dt><dd>256×256 · Adam optimizer · BCEWithLogitsLoss</dd></div>
+              <div><dt>Test results</dt><dd>Test IoU: 0.5280 · Test Dice: 0.6901</dd></div>
+              <div><dt>Dataset</dt><dd>Massachusetts Buildings · 137 train / 4 validation / 10 test</dd></div>
+            </dl>
+            <p class="project-note">Early baseline metrics are mean per-image scores on a 10-image test split. Full-resolution inference is not yet implemented.</p>
+          </div>
+          <div class="project-visual orbital-evidence" aria-label="OrbitalVision visual evidence">
+            <div class="visual-label"><span>Visual comparison</span><span>TinyUNet · building footprints</span></div>
+            <div class="orbital-primary-scroll" tabindex="0" aria-label="Scrollable OrbitalVision prediction comparison">
+              <figure class="orbital-primary-evidence">
+                <img src="images/projects/orbitalvision/test-prediction.webp" width="1800" height="467" loading="lazy" decoding="async" alt="Four-panel OrbitalVision test visualization showing an input satellite image, ground-truth building mask, probability heatmap, and predicted binary mask">
+                <figcaption>Test example / input · ground truth · probability heatmap · predicted mask</figcaption>
+              </figure>
+            </div>
+            <p class="orbital-evidence-cue">Swipe for training evidence →</p>
+            <div class="orbital-chart-strip" tabindex="0" aria-label="Scrollable OrbitalVision training evidence">
+              <figure>
+                <img src="images/projects/orbitalvision/loss-curve.webp" width="1580" height="980" loading="lazy" decoding="async" alt="Line chart titled OrbitalVision Training and Validation Loss showing train loss and validation loss by epoch">
+                <figcaption>Training and validation loss</figcaption>
+              </figure>
+              <figure>
+                <img src="images/projects/orbitalvision/validation-metrics.webp" width="1580" height="980" loading="lazy" decoding="async" alt="Line chart titled OrbitalVision Validation Segmentation Metrics plotting validation Dice and validation IoU by epoch">
+                <figcaption>Validation Dice and IoU</figcaption>
+              </figure>
+              <figure>
+                <img src="images/projects/orbitalvision/precision-recall.webp" width="1580" height="980" loading="lazy" decoding="async" alt="Line chart titled OrbitalVision Precision and Recall plotting precision and recall by epoch">
+                <figcaption>Precision and recall</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div class="project-visual keepwise-evidence" aria-label="Keepwise application screenshot region">
+            <!-- Replace neutral application frame with verified Keepwise screenshots. -->
+            <div class="app-frame" aria-hidden="true">
+              <div class="app-bar"><span></span><span>Keepwise / Library</span></div>
+              <div class="app-layout">
+                <div class="app-sidebar"><i></i><i></i><i></i><i></i></div>
+                <div class="app-content"><span>INDEX</span><span>COMPARE</span><span>REVIEW</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-copy">
+            <p class="project-number">03 / Local-first software</p>
+            <h3>Keepwise</h3>
+            <p class="project-subtitle">Local Photo Review Application</p>
+            <p>A local-first desktop application for reviewing duplicate and similar photographs using image indexing, metadata processing, hashing, and keyboard-driven workflows.</p>
+            <dl class="project-specs">
+              <div><dt>Year / status</dt><dd>2026 · Active Development · v0.7</dd></div>
+              <div><dt>Application</dt><dd>Rust · Tauri · Svelte · SQLite</dd></div>
+              <div><dt>Focus</dt><dd>Image Processing · Local-First Software</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="project-row project-row--reverse">
+          <div class="project-copy">
+            <p class="project-number">04 / Local AI</p>
+            <h3>SourceRecall</h3>
+            <p class="project-subtitle">Local Retrieval-Augmented Generation</p>
+            <p>A local RAG system for document ingestion, embedding generation, vector retrieval, source grounding, and local model inference.</p>
+            <dl class="project-specs">
+              <div><dt>Status</dt><dd>Prototype · Interface Under Review</dd></div>
+              <div><dt>Core stack</dt><dd>Python · ChromaDB · Ollama</dd></div>
+              <div><dt>Focus</dt><dd>Embeddings · Retrieval-Augmented Generation · Local AI</dd></div>
+            </dl>
+          </div>
+          <div class="project-visual rag-evidence" aria-label="SourceRecall retrieval pipeline">
+            <div class="visual-label"><span>Retrieval path</span><span>Local inference</span></div>
+            <ol>
+              <li><span>01</span><strong>Ingest</strong></li>
+              <li><span>02</span><strong>Embed</strong></li>
+              <li><span>03</span><strong>Retrieve</strong></li>
+              <li><span>04</span><strong>Ground</strong></li>
+              <li><span>05</span><strong>Respond</strong></li>
+            </ol>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="shell section-intro section-intro--light">
+        <p class="section-label">Experience &amp; Education</p>
+        <div>
+          <h2 id="experience-title">Learning by shipping real systems.</h2>
+          <p>Engineering experience grounded in production reliability, computer science, and applied problem solving.</p>
+        </div>
+      </div>
+
+      <div class="shell timeline">
+        <article class="timeline-entry timeline-entry--primary">
+          <p class="timeline-date">June–August 2026</p>
+          <div>
+            <p class="project-subtitle">Kent State University</p>
+            <h3>AI/ML Engineering Intern</h3>
+            <p>Contributed across LLM integration, model-serving behavior, API and parser validation, telemetry, automated testing, production reliability, and cross-team collaboration.</p>
+            <ul class="detail-list">
+              <li>LLM integration and model-serving behavior</li>
+              <li>API and parser validation</li>
+              <li>Telemetry and automated testing</li>
+              <li>Production reliability and cross-team collaboration</li>
+            </ul>
+          </div>
+        </article>
+        <article class="timeline-entry">
+          <p class="timeline-date">Expected May 2027</p>
+          <div>
+            <p class="project-subtitle">Kent State University</p>
+            <h3>B.S. Computer Science</h3>
+            <p>Cybersecurity concentration with relevant work across machine learning, linear algebra, computer vision, backend systems, and network security.</p>
+          </div>
+        </article>
+        <article class="timeline-entry">
+          <p class="timeline-date">Credential</p>
+          <div>
+            <p class="project-subtitle">Remote Pilot Certification</p>
+            <h3>FAA Part 107</h3>
+            <p>Connecting aerial imaging, safety, and Earth-observation interests.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="lab-section" id="lab" aria-labelledby="lab-title">
+      <div class="shell section-intro">
+        <p class="section-label">The Lab</p>
+        <div>
+          <h2 id="lab-title">Study the fundamentals. Build the intuition.</h2>
+          <p>Working notes and experiments that make complex systems easier to understand and build.</p>
+        </div>
+      </div>
+      <div class="shell lab-list">
+        <article>
+          <span class="lab-number" aria-hidden="true">01</span>
+          <div><p class="project-number">Learning Build</p><h3>Transformer From Scratch</h3></div>
+          <p>Exploring attention, multi-head attention, transformer blocks, and language-model fundamentals from first principles.</p>
+        </article>
+        <article>
+          <span class="lab-number" aria-hidden="true">02</span>
+          <div><p class="project-number">Evolving Notes</p><h3>AI/ML Field Guide</h3></div>
+          <p>An evolving collection of notes and visual explanations covering mathematics, machine learning, and model architecture.</p>
+        </article>
+        <article>
+          <span class="lab-number" aria-hidden="true">03</span>
+          <div><p class="project-number">Experiment in Progress</p><h3>Current Experiment</h3></div>
+          <p>A protected space for the next technical question—clearly evolving, deliberately unfinished, and documented as it develops.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mission-section" aria-labelledby="mission-title">
+      <div class="shell mission-grid">
+        <div class="mission-mark" aria-hidden="true"><span>NASA</span><strong>POWER</strong></div>
+        <div>
+          <p class="section-label">Research Direction · Planning · Next Build</p>
+          <h2 id="mission-title">Next Mission</h2>
+          <p class="mission-lead">Exploring how NASA POWER weather and environmental data can support an applied AI system involving forecasting, learning, or environmental insight.</p>
+          <p>This is a future research direction—not a finished, trained, deployed, or validated product.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="shell about-grid">
+        <div>
+          <p class="section-label">About</p>
+          <h2 id="about-title">Ideas become useful when the whole system works.</h2>
+        </div>
+        <div class="about-copy">
+          <p>I’m most interested in turning ambitious ideas into complete products: the model, the software around it, the tests that make it trustworthy, and the interface that makes it useful.</p>
+          <p>My path through Kent State connects AI and engineering with mathematical foundations, space and Earth observation, and technology built for meaningful missions. Photography adds another discipline—visual storytelling, careful observation, and attention to the details people actually experience.</p>
+          <ul class="theme-list" aria-label="Core themes">
+            <li>Complete systems</li><li>Meaningful missions</li><li>Visual storytelling</li>
           </ul>
         </div>
-      
-        <div class="card">
-  <h3>Interior/Exterior (Ground)</h3>
-  <div class="price"><strong>By size</strong></div>
-  <ul>
-    <li>Professionally edited photos covering the entire property</li>
-    <li>MLS / web-ready exports</li>
-    <li><strong>Pricing by size:</strong><br>
-      ≤ 2,500 sq ft → $175<br>
-      2,500–4,000 sq ft → $225<br>
-      4,000–5,500 sq ft → $300<br>
-      5,500+ sq ft → Quote (starts ~$325)
-    </li>
-  </ul>
-</div>
-
-<div class="card" style="border-color:var(--accent); box-shadow:var(--shadow)">
-  <h3>Full Package</h3>
-  <div class="small" style="margin:-4px 0 8px;color:#666">Ground + Drone (bundle saves $20)</div>
-  <div class="price"><strong>$245 / $295 / $370</strong></div>
-  <ul>
-    <li>Comprehensive coverage with all the key angles and highlights</li>
-    <li>Typical turnaround next day</li>
-    <li><strong>5,500+ sq ft:</strong> $395+ (quote)</li>
-  </ul>
-</div>
-
       </div>
+    </section>
 
-      <h3 style="margin:28px 0 8px">Add‑Ons</h3>
-      <div class="addons">
-        <div class="addon"><strong>Twilight shoot</strong><br><span class="small">+$75</span></div>
-        <div class="addon">
-          <strong>Drone Rush turnaround (same‑day)</strong><br>
-          <span class="small">+$25</span>
-          <div class="fineprint">Available for shoots booked before 3:00 PM. Delivery speed may vary based on project size and schedule.</div>
-        </div>
-        <div class="addon">
-          <strong>Interior/Exterior Rush turnaround (same‑day)</strong><br>
-          <span class="small">+$75</span>
-          <div class="fineprint">Available for shoots booked before 3:00 PM. Delivery speed may vary based on project size and schedule.</div>
-        </div>
-        <div class="addon"><strong>Travel outside NE Ohio</strong><br><span class="small">Quote</span></div>
+    <section class="photography-section" aria-labelledby="photography-title">
+      <picture class="photography-image">
+        <source srcset="images/site/photography-divider-800.webp 800w, images/site/photography-divider-1600.webp 1600w" sizes="100vw" type="image/webp">
+        <img src="images/drone4.jpg" width="1600" height="1200" loading="lazy" alt="Aerial photograph of a home and surrounding Ohio neighborhood beneath dramatic clouds">
+      </picture>
+      <div class="photography-overlay" aria-hidden="true"></div>
+      <div class="shell photography-content">
+        <p class="section-label">Photography &amp; FAA Part 107</p>
+        <h2 id="photography-title">Engineering meets visual storytelling.</h2>
+        <p>Photography shapes how I approach computer vision, imaging workflows, visual communication, and the details that make technical work understandable.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about" class="section" aria-label="About">
-    <div class="container about">
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="shell contact-grid">
+        <div>
+          <p class="section-label">Contact</p>
+          <h2 id="contact-title">Let’s build something meaningful.</h2>
+          <p>I’m open to AI/ML internships and May 2027 full-time roles involving applied AI, computer vision, backend systems, and product-minded engineering.</p>
+          <div class="contact-details">
+            <span>Email</span>
+            <a href="mailto:nickvuletich23@gmail.com">nickvuletich23@gmail.com</a>
+          </div>
+          <p class="contact-note">Résumé access will be added when the verified PDF is available.</p>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/xdkgkgaq" method="POST">
+          <div class="form-row">
+            <div class="field">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="contact-subject">Subject</label>
+            <input id="contact-subject" name="subject" type="text" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="contact-message">What would you like to build?</label>
+            <textarea id="contact-message" name="message" rows="6" required></textarea>
+          </div>
+          <button class="button button--primary" type="submit">Send Message <span aria-hidden="true">↗</span></button>
+          <p class="form-privacy">Form submissions are processed by Formspree and used only to respond to your message. Do not include sensitive information.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
       <div>
-        <h2 style="margin-top:0">I'm Nick Vuletich.</h2>
-        <p>Kent‑based photographer and FAA‑certified drone pilot. I capture properties, people, and places with one goal: make every shot feel alive.</p>
-        <ul class="small">
-          <li>Sony A7 IV • Sigma 24‑70 • Sigma 150‑600</li>
-          <li>DJI Air 3S • Ronin RS3</li>
-          <li>FAA Part 107 certified</li>
-        </ul>
-        <p class="small">Reliable communication, on‑time shoots, and quick turnaround on edited photos.</p>
+        <a class="footer-brand" href="#home">Nick Vuletich</a>
+        <p>AI/ML Engineer &amp; Software Developer</p>
       </div>
-      <img src="images/NMV02492.jpg" alt="Nick portrait" loading="lazy" />
-    </div>
-  </section>
-
-  <section id="contact" class="section" style="background:#fafafa;border-top:1px solid #eee;border-bottom:1px solid #eee" aria-label="Contact / Book">
-    <div class="container">
-      <h2 style="margin:0 0 12px">Contact / Book</h2>
-      <p class="small">You can email me at nicks.captures.contact@gmail.com or fill out the form below.</p>
-      <p class="small">Tell me what you need and when. I'll reply with availability and next steps.</p>
-      <form action="https://formspree.io/f/xdkgkgaq" method="POST" style="max-width:560px;margin-top:16px;display:grid;gap:12px">
-        <input name="name" required placeholder="Name" style="padding:12px;border-radius:12px;border:1px solid #ddd"/>
-        <input name="email" required type="email" placeholder="Email" style="padding:12px;border-radius:12px;border:1px solid #ddd"/>
-        <input name="subject" placeholder="Subject" style="padding:12px;border-radius:12px;border:1px solid #ddd"/>
-        <textarea name="message" rows="6" placeholder="What are you looking for? Dates? Location?" style="padding:12px;border-radius:12px;border:1px solid #ddd"></textarea>
-        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button class="btn primary" type="submit">Send</button>
-          <a class="btn ghost" href="mailto:nick@nickvuletich.com">Email me</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> Nick Vuletich. FAA Part 107.</div>
-      <div class="small">NE Ohio • Kent • <a href="mailto:nick@nickvuletich.com" style="color:inherit">nicks.captures.contact@gmail.com</a></div>
+      <nav aria-label="Footer">
+        <a href="#projects">Projects</a>
+        <a href="#lab">Lab</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <a href="https://github.com/NickVuletich">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/nicholas-vuletich-b5507a321/">LinkedIn ↗</a>
+        <span>© <span data-year></span> Nick Vuletich</span>
+      </div>
     </div>
   </footer>
-
-  <script>
-    // Year stamp
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile drawer toggle
-    const btn = document.querySelector('.hamburger');
-    const drawer = document.getElementById('mobile-menu');
-    if (btn && drawer){
-      btn.addEventListener('click', () => {
-        const open = drawer.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      // Close drawer when clicking a link
-      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
-        drawer.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }));
-    }
-
-    // Optional: enable smooth scroll for same‑page anchors
-    if ('scrollBehavior' in document.documentElement.style){
-      document.documentElement.style.scrollBehavior = 'smooth';
-    }
-  </script>
 </body>
 </html>

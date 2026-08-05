@@ -49,6 +49,11 @@
     @media (max-width:720px){
       h1{font-size:36px}
       .section-title{font-size:28px}
+      header{position:relative}
+      .nav{height:auto;min-height:64px;align-items:flex-start;gap:12px;padding-top:12px;padding-bottom:12px}
+      .nav .brand{padding-top:8px}
+      .nav nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+      .nav a{margin-left:0}
     }
   </style>
 </head>
@@ -64,7 +69,7 @@
         <a href="#real-estate" class="tab">Real Estate</a>
         <a href="#drone" class="tab">Drone</a>
         <!-- <a href="#portraits" class="tab">Portraits</a> -->
-        <a href="index.html" class="cta">Book</a>
+        <a href="index.html#contact" class="cta">Contact</a>
       </nav>
     </div>
   </header>
@@ -75,8 +80,7 @@
 
     <!-- Quick tabs -->
     <div class="tabs">
-      <a href="#all" class="tab active">All</a>
-      <a href="#real-estate" class="tab">Real Estate</a>
+      <a href="#real-estate" class="tab active">Real Estate</a>
       <a href="#drone" class="tab">Drone</a>
       <!-- <a href="#portraits" class="tab">Portraits</a> -->
     </div>
@@ -218,7 +222,7 @@
     </section>
     -->
     <!-- Closing line -->
-    <p class="quiet-line" style="margin-top:36px">Need something specific? <a href="mailto:nicks.captures.contact@gmail.com" style="color:var(--accent);text-decoration:none">Email me</a> — I’ll make it happen.</p>
+    <p class="quiet-line" style="margin-top:36px">Need something specific? <a href="mailto:nickvuletich23@gmail.com" style="color:var(--accent);text-decoration:none">Email me</a> — I’ll make it happen.</p>
   </main>
 
   <footer>
@@ -229,14 +233,6 @@
   </footer>
 
   <!-- Lightboxes (duplicate per image; link target from grid) -->
-  <!-- ALL -->
-  <div id="lb-all-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/real-estate-01.jpg" alt=""></div></div>
-  <div id="lb-all-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/drone-01.jpg" alt=""></div></div>
-  <div id="lb-all-03" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-01.jpg" alt=""></div></div>
-  <div id="lb-all-04" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/real-estate-02.jpg" alt=""></div></div>
-  <div id="lb-all-05" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/drone-02.jpg" alt=""></div></div>
-  <div id="lb-all-06" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-02.jpg" alt=""></div></div>
-
   <!-- RE -->
   <div id="lb-re-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re1.jpg" alt=""></div></div>
   <div id="lb-re-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/re2.jpg" alt=""></div></div>
@@ -253,12 +249,6 @@
   <div id="lb-dr-05" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone5.jpg" alt=""></div></div>
   <div id="lb-dr-06" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone6.jpg" alt=""></div></div>
   <div id="lb-dr-07" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/drone7.jpg" alt=""></div></div>
-
-  <!-- PO -->
-  <div id="lb-po-01" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-01.jpg" alt=""></div></div>
-  <div id="lb-po-02" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-02.jpg" alt=""></div></div>
-  <div id="lb-po-03" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-03.jpg" alt=""></div></div>
-  <div id="lb-po-04" class="lightbox"><a class="overlay" href="#close"></a><a class="close" href="#close">x</a><div class="stage"><img src="images/portfolio/portrait-04.jpg" alt=""></div></div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
