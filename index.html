@@ -15,7 +15,7 @@
   <meta name="twitter:description" content="Building intelligent systems from model to deployment.">
   <meta id="theme-color" name="theme-color" content="#f5f7f8">
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js?v=keepwise-evidence" defer></script>
+  <script src="script.js?v=orbital-homepage-simplify" defer></script>
 </head>
 <body class="portfolio-home" id="home">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -128,45 +128,30 @@
           </div>
         </article>
 
-        <article class="project-row project-row--reverse">
-          <div class="project-copy">
+        <article class="project-row project-row--reverse project-row--orbital">
+          <div class="project-copy orbital-copy">
             <p class="project-number">02 / Computer vision</p>
             <h3>OrbitalVision</h3>
             <p class="project-subtitle">Aerial Building Footprint Segmentation</p>
-            <p>A PyTorch semantic-segmentation project that trains a custom TinyUNet encoder-decoder to predict building footprints from Massachusetts satellite imagery. The end-to-end pipeline covers paired image and mask loading, training, checkpoint selection, evaluation, and prediction visualization.</p>
-            <dl class="project-specs">
-              <div><dt>Year / status</dt><dd>2026 · Working v1 Baseline</dd></div>
-              <div><dt>Model</dt><dd>TinyUNet · Encoder/decoder · Skip connections</dd></div>
-              <div><dt>Framework</dt><dd>Python · PyTorch</dd></div>
-              <div><dt>Training</dt><dd>256×256 · Adam optimizer · BCEWithLogitsLoss</dd></div>
-              <div><dt>Test results</dt><dd>Test IoU: 0.5280 · Test Dice: 0.6901</dd></div>
-              <div><dt>Dataset</dt><dd>Massachusetts Buildings · 137 train / 4 validation / 10 test</dd></div>
+            <p>A PyTorch semantic-segmentation project using a custom TinyUNet encoder-decoder with skip connections to predict building footprints from Massachusetts satellite imagery.</p>
+            <dl class="orbital-proof" aria-label="OrbitalVision test results">
+              <div><dt>IoU</dt><dd>0.5280</dd></div>
+              <div><dt>Dice</dt><dd>0.6901</dd></div>
             </dl>
-            <p class="project-note">Early baseline metrics are mean per-image scores on a 10-image test split. Full-resolution inference is not yet implemented.</p>
+            <p class="project-note">Mean per-image scores on a 10-image held-out test split.<br>Full-resolution inference is not yet implemented.</p>
+            <!-- Future CTA location: View OrbitalVision Case Study. -->
           </div>
           <div class="project-visual orbital-evidence" aria-label="OrbitalVision visual evidence">
             <div class="visual-label"><span>Visual comparison</span><span>TinyUNet · building footprints</span></div>
-            <div class="orbital-primary-scroll" tabindex="0" aria-label="Scrollable OrbitalVision prediction comparison">
-              <figure class="orbital-primary-evidence">
+            <figure class="orbital-primary-evidence">
+              <!-- test-prediction-mobile.webp mechanically rearranges only the four original panels into a responsive 2×2 layout; labels, colors, masks, and model output are unchanged. -->
+              <!-- Future accessible evidence viewer trigger should wrap this picture in a real button; no inactive control is exposed on the homepage. -->
+              <picture>
+                <source media="(max-width: 640px)" srcset="images/projects/orbitalvision/test-prediction-mobile.webp" width="900" height="934">
                 <img src="images/projects/orbitalvision/test-prediction.webp" width="1800" height="467" loading="lazy" decoding="async" alt="Four-panel OrbitalVision test visualization showing an input satellite image, ground-truth building mask, probability heatmap, and predicted binary mask">
-                <figcaption>Test example / input · ground truth · probability heatmap · predicted mask</figcaption>
-              </figure>
-            </div>
-            <p class="orbital-evidence-cue">Swipe for training evidence →</p>
-            <div class="orbital-chart-strip" tabindex="0" aria-label="Scrollable OrbitalVision training evidence">
-              <figure>
-                <img src="images/projects/orbitalvision/loss-curve.webp" width="1580" height="980" loading="lazy" decoding="async" alt="Line chart titled OrbitalVision Training and Validation Loss showing train loss and validation loss by epoch">
-                <figcaption>Training and validation loss</figcaption>
-              </figure>
-              <figure>
-                <img src="images/projects/orbitalvision/validation-metrics.webp" width="1580" height="980" loading="lazy" decoding="async" alt="Line chart titled OrbitalVision Validation Segmentation Metrics plotting validation Dice and validation IoU by epoch">
-                <figcaption>Validation Dice and IoU</figcaption>
-              </figure>
-              <figure>
-                <img src="images/projects/orbitalvision/precision-recall.webp" width="1580" height="980" loading="lazy" decoding="async" alt="Line chart titled OrbitalVision Precision and Recall plotting precision and recall by epoch">
-                <figcaption>Precision and recall</figcaption>
-              </figure>
-            </div>
+              </picture>
+              <figcaption>Test example / input · ground truth · probability heatmap · predicted mask</figcaption>
+            </figure>
           </div>
         </article>
 

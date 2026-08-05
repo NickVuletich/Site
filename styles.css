@@ -613,6 +613,11 @@ p {
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
 }
 
+.project-row--orbital {
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  gap: clamp(3rem, 5vw, 5rem);
+}
+
 .project-copy {
   max-width: 31rem;
 }
@@ -714,49 +719,34 @@ p {
   font-size: 1.15rem;
 }
 
-.orbital-evidence {
-  display: flex;
+.project-visual.orbital-evidence {
   min-width: 0;
-  min-height: 640px;
-  flex-direction: column;
+  min-height: 0;
+  align-self: center;
 }
 
-.orbital-primary-scroll,
-.orbital-chart-strip {
-  max-width: 100%;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scrollbar-color: var(--line-strong) transparent;
-  scrollbar-width: thin;
-}
-
-.orbital-primary-scroll {
+.orbital-primary-evidence {
+  margin: 0;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: #ffffff;
 }
 
-.orbital-primary-scroll:focus-visible,
-.orbital-chart-strip:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
-.orbital-primary-evidence,
-.orbital-chart-strip figure {
-  margin: 0;
-}
-
-.orbital-primary-evidence img,
-.orbital-chart-strip img {
+.orbital-primary-evidence picture,
+.orbital-primary-evidence img {
+  display: block;
   width: 100%;
+}
+
+.orbital-primary-evidence img {
   height: auto;
 }
 
-.orbital-primary-evidence figcaption,
-.orbital-chart-strip figcaption {
+.orbital-primary-evidence figcaption {
   padding: 0.55rem 0.7rem;
   border-top: 1px solid var(--line);
+  background: var(--surface);
   color: var(--muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.6rem;
@@ -764,49 +754,34 @@ p {
   text-transform: uppercase;
 }
 
-.orbital-evidence-cue {
-  display: none;
-  margin: 0.85rem 0 0;
-  color: var(--accent);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.orbital-proof {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.6rem 0 0;
+  border-block: 1px solid var(--line);
 }
 
-.orbital-chart-strip {
-  display: flex;
-  gap: 0.7rem;
-  margin-top: 0.9rem;
-  padding: 0 0.1rem 0.55rem;
-  scroll-snap-type: x proximity;
+.orbital-proof div {
+  padding: 0.9rem 0.8rem 0.9rem 0;
 }
 
-.orbital-chart-strip figure {
-  flex: 0 0 clamp(26rem, 72vw, 29rem);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: #ffffff;
-  scroll-snap-align: start;
+.orbital-proof div + div {
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--line);
 }
 
-@media (min-width: 901px) {
-  .orbital-primary-scroll {
-    overflow-x: hidden;
-  }
+.orbital-proof dt {
+  margin-bottom: 0.25rem;
+  color: var(--faint);
+  font-size: 0.62rem;
+}
 
-  .orbital-chart-strip {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    overflow-x: visible;
-    scroll-snap-type: none;
-  }
-
-  .orbital-chart-strip figure {
-    min-width: 0;
-  }
+.orbital-proof dd {
+  margin: 0;
+  color: var(--accent-deep);
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  font-weight: 760;
+  line-height: 1;
 }
 
 .keepwise-evidence {
@@ -1454,14 +1429,6 @@ p {
     order: 2;
   }
 
-  .orbital-evidence-cue {
-    display: block;
-  }
-
-  .orbital-chart-strip {
-    scroll-snap-type: x mandatory;
-  }
-
   .project-copy {
     max-width: 42rem;
   }
@@ -1579,10 +1546,6 @@ p {
 
   .rocky-evidence li small {
     display: none;
-  }
-
-  .orbital-primary-evidence {
-    min-width: 42rem;
   }
 
   .keepwise-primary-evidence {

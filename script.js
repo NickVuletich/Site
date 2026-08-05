@@ -88,37 +88,6 @@
       });
     }
 
-    const evidenceStrip = document.querySelector(".orbital-chart-strip");
-    if (evidenceStrip) {
-      evidenceStrip.addEventListener("keydown", (event) => {
-        if (evidenceStrip.scrollWidth <= evidenceStrip.clientWidth + 1) return;
-
-        const cards = Array.from(evidenceStrip.querySelectorAll("figure"));
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const cardPosition = (card) => card.offsetLeft - evidenceStrip.offsetLeft;
-        let target = null;
-
-        if (event.key === "ArrowRight") {
-          target = cards.find((card) => cardPosition(card) > evidenceStrip.scrollLeft + 8);
-        } else if (event.key === "ArrowLeft") {
-          target = cards.slice().reverse().find((card) => cardPosition(card) < evidenceStrip.scrollLeft - 8);
-        } else if (event.key === "Home") {
-          target = cards[0];
-        } else if (event.key === "End") {
-          target = cards[cards.length - 1];
-        } else {
-          return;
-        }
-
-        if (!target) return;
-        event.preventDefault();
-        evidenceStrip.scrollTo({
-          left: cardPosition(target),
-          behavior: reducedMotion ? "auto" : "smooth"
-        });
-      });
-    }
-
     document.querySelectorAll("[data-horizontal-evidence]").forEach((evidence) => {
       evidence.addEventListener("keydown", (event) => {
         if (evidence.scrollWidth <= evidence.clientWidth + 1) return;
