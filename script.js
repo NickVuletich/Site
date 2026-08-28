@@ -4,14 +4,9 @@
   const root = document.documentElement;
   const storageKey = "nv-theme";
 
-  try {
-    const savedTheme = localStorage.getItem(storageKey);
-    if (savedTheme === "light" || savedTheme === "dark") {
-      root.dataset.theme = savedTheme;
-    }
-  } catch (_error) {
-    // Local storage can be unavailable in privacy-restricted browsing contexts.
-  }
+  // The saved theme is applied before first paint by the inline script in
+  // <head> (script.js loads with `defer`, which would otherwise flash the
+  // wrong theme). This module only needs to read the theme it already set.
 
   function systemTheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -88,37 +83,21 @@
       });
     }
 
-    document.querySelectorAll("[data-horizontal-evidence]").forEach((evidence) => {
-      evidence.addEventListener("keydown", (event) => {
-        if (evidence.scrollWidth <= evidence.clientWidth + 1) return;
-
-        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const maximum = evidence.scrollWidth - evidence.clientWidth;
-        const step = Math.max(evidence.clientWidth * 0.8, 280);
-        let target;
-
-        if (event.key === "ArrowRight") {
-          target = Math.min(maximum, evidence.scrollLeft + step);
-        } else if (event.key === "ArrowLeft") {
-          target = Math.max(0, evidence.scrollLeft - step);
-        } else if (event.key === "Home") {
-          target = 0;
-        } else if (event.key === "End") {
-          target = maximum;
-        } else {
-          return;
-        }
-
-        event.preventDefault();
-        evidence.scrollTo({
-          left: target,
-          behavior: reducedMotion ? "auto" : "smooth"
-        });
-      });
-    });
-
     document.querySelectorAll("[data-year]").forEach((year) => {
       year.textContent = String(new Date().getFullYear());
+    });
+
+    document.querySelectorAll("[data-lightbox-trigger]").forEach((trigger) => {
+      const dialog = document.getElementById(trigger.dataset.lightboxTrigger);
+      if (!dialog || typeof dialog.showModal !== "function") return;
+
+      trigger.addEventListener("click", () => {
+        dialog.showModal();
+      });
+
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
     });
   }
 

@@ -6,6 +6,7 @@
   <title>Nick Vuletich — AI/ML Engineer &amp; Software Developer</title>
   <meta name="description" content="Nick Vuletich is a Computer Science student building applied AI systems across machine learning, computer vision, LLM infrastructure, backend software, testing, and deployment.">
   <link rel="canonical" href="https://nickvuletich.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Nick Vuletich — AI/ML Engineer &amp; Software Developer">
   <meta property="og:description" content="Building intelligent systems from model to deployment.">
   <meta property="og:url" content="https://nickvuletich.com/">
@@ -14,6 +15,16 @@
   <meta name="twitter:title" content="Nick Vuletich — AI/ML Engineer &amp; Software Developer">
   <meta name="twitter:description" content="Building intelligent systems from model to deployment.">
   <meta id="theme-color" name="theme-color" content="#f5f7f8">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("nv-theme");
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch (_error) {
+        // Local storage can be unavailable in privacy-restricted browsing contexts.
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js?v=orbital-homepage-simplify" defer></script>
 </head>
@@ -38,10 +49,10 @@
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary" data-navigation>
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
-        <a href="#lab">Lab</a>
         <a href="#experience">Experience &amp; Education</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
+        <a class="nav-secondary" href="real-estate.html">Photography <span aria-hidden="true">↗</span></a>
       </nav>
 
       <div class="nav-actions">
@@ -61,7 +72,7 @@
           <p class="professional-identity">AI/ML Engineer &amp; Software Developer</p>
           <h1 id="hero-title">Building intelligent systems <span>from model to deployment.</span></h1>
           <p class="hero-intro">I’m a Computer Science student at Kent State University graduating in May 2027. I build applied AI systems across the full stack—from model development and computer vision to LLM infrastructure, backend software, testing, and deployment.</p>
-          <p class="availability"><span aria-hidden="true"></span> AI/ML Engineering Intern at Kent State · Summer 2026</p>
+          <p class="hero-meta">Kent State University · Computer Science · Expected May 2027</p>
 
           <div class="hero-actions" aria-label="Primary actions">
             <a class="button button--primary" href="#projects">View Projects <span aria-hidden="true">↓</span></a>
@@ -98,122 +109,123 @@
         <p class="section-label">Selected work</p>
         <div>
           <h2 id="projects-title">Systems built across the AI stack.</h2>
-          <p>Selected work spanning LLM infrastructure, computer vision, local-first product engineering, and retrieval systems.</p>
+          <p>Selected work spanning computer vision, retrieval-augmented generation, and model internals — plus the earlier and supporting projects behind them.</p>
         </div>
       </div>
 
       <div class="shell project-list">
-        <article class="project-row project-row--compact">
-          <div class="project-copy">
-            <p class="project-number">01 / Flagship system</p>
-            <h3>Rocky</h3>
-            <p class="project-subtitle">Kent State University LLM Platform</p>
-            <p>Contributed to model-serving behavior and reliability work for Kent State University’s internal AI chat platform.</p>
-            <dl class="project-specs project-specs--proof">
-              <div><dt>Integration</dt><dd>LLM behavior · API and parser validation</dd></div>
-              <div><dt>Reliability</dt><dd>Telemetry · Automated testing</dd></div>
-            </dl>
-            <p class="project-note">Internal systems and source remain private.</p>
-            <!-- Add only approved, sanitized Rocky evidence here when it is available for public use. -->
-          </div>
-        </article>
-
         <article class="project-row project-row--reverse project-row--orbital">
           <div class="project-copy orbital-copy">
-            <p class="project-number">02 / Computer vision</p>
+            <p class="project-number">01 / Computer vision</p>
             <h3>OrbitalVision</h3>
             <p class="project-subtitle">Aerial Building Footprint Segmentation</p>
-            <p>A PyTorch semantic-segmentation project using a custom TinyUNet encoder-decoder with skip connections to predict building footprints from Massachusetts satellite imagery.</p>
+            <p>A PyTorch semantic-segmentation project using a custom TinyUNet encoder-decoder with skip connections to predict building footprints from Massachusetts satellite imagery. The goal wasn’t just a working model — it was understanding how a U-Net actually moves data through an encoder, a decoder, and the skip connections between them, and learning to test each piece in isolation before integrating the full pipeline, rather than building everything at once and debugging afterward.</p>
             <dl class="orbital-proof" aria-label="OrbitalVision test results">
               <div><dt>IoU</dt><dd>0.5280</dd></div>
               <div><dt>Dice</dt><dd>0.6901</dd></div>
             </dl>
             <p class="project-note">Mean per-image scores on a 10-image held-out test split.<br>Full-resolution inference is not yet implemented.</p>
-            <!-- Future CTA location: View OrbitalVision Case Study. -->
           </div>
           <div class="project-visual orbital-evidence" aria-label="OrbitalVision visual evidence">
             <div class="visual-label"><span>Visual comparison</span><span>TinyUNet · building footprints</span></div>
             <figure class="orbital-primary-evidence">
               <!-- test-prediction-mobile.webp mechanically rearranges only the four original panels into a responsive 2×2 layout; labels, colors, masks, and model output are unchanged. -->
-              <!-- Future accessible evidence viewer trigger should wrap this picture in a real button; no inactive control is exposed on the homepage. -->
-              <picture>
-                <source media="(max-width: 640px)" srcset="images/projects/orbitalvision/test-prediction-mobile.webp" width="900" height="934">
-                <img src="images/projects/orbitalvision/test-prediction.webp" width="1800" height="467" loading="lazy" decoding="async" alt="Four-panel OrbitalVision test visualization showing an input satellite image, ground-truth building mask, probability heatmap, and predicted binary mask">
-              </picture>
+              <!-- Single composited image: the model's raw input/mask/heatmap/prediction layers are not currently available as separate assets. If they become available, they can replace this <picture> with individual layer images without changing the surrounding markup. -->
+              <button type="button" class="evidence-zoom-trigger" data-lightbox-trigger="orbital-lightbox" aria-haspopup="dialog" aria-label="View OrbitalVision test visualization enlarged">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="images/projects/orbitalvision/test-prediction-mobile.webp" width="900" height="934">
+                  <img src="images/projects/orbitalvision/test-prediction.webp" width="1800" height="467" loading="lazy" decoding="async" alt="Four-panel OrbitalVision test visualization showing an input satellite image, ground-truth building mask, probability heatmap, and predicted binary mask">
+                </picture>
+                <span class="evidence-zoom-badge" aria-hidden="true">Enlarge ⤢</span>
+              </button>
               <figcaption>Test example / input · ground truth · probability heatmap · predicted mask</figcaption>
             </figure>
           </div>
         </article>
 
-        <article class="project-row">
-          <div class="project-visual keepwise-evidence" aria-label="Keepwise product evidence">
-            <div class="visual-label"><span>Product evidence</span><span>macOS · local-first</span></div>
-            <div class="keepwise-primary-scroll" tabindex="0" data-horizontal-evidence aria-label="Scrollable Keepwise exact-copy review interface">
-              <figure class="keepwise-primary-evidence">
-                <img src="images/projects/keepwise/exact-review.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Keepwise demonstration interface with generated data showing two byte-for-byte duplicate photos side by side, a preferred copy, and Keep, Maybe, and Reject review controls">
-                <figcaption><span>Side-by-side exact-copy review</span><strong>UI demo · Generated data</strong></figcaption>
-              </figure>
-            </div>
-            <p class="keepwise-evidence-cue">Swipe or use arrow keys for interface detail →</p>
-            <figure class="keepwise-safeguard-evidence">
-              <img src="images/projects/keepwise/all-copies-safeguard.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Keepwise demonstration safety dialog with generated data warning that rejecting every copy would leave no retained copy">
-              <figcaption><span>Retained-copy safety guard</span><strong>UI demo · Generated data</strong></figcaption>
-            </figure>
-          </div>
+        <article class="project-row" id="sourcerecall">
           <div class="project-copy">
-            <p class="project-number">03 / Local-first software</p>
-            <h3>Keepwise</h3>
-            <p class="project-subtitle">Local-First Exact Duplicate Review</p>
-            <p>A local-first macOS photo-review prototype that finds byte-for-byte duplicates using size bucketing and streaming SHA-256. Rust owns filesystem access, hashing, persistence, and safety boundaries. Keepwise stores Libraries, immutable Scan history, duplicate groups, and review decisions in SQLite while keeping source photographs read-only.</p>
-            <dl class="project-specs">
-              <div><dt>Year / status</dt><dd>2026 · Functional Prototype</dd></div>
-              <div><dt>Platform</dt><dd>macOS · Tauri 2</dd></div>
-              <div><dt>Core</dt><dd>Rust</dd></div>
-              <div><dt>Interface</dt><dd>Svelte 5 · TypeScript</dd></div>
-              <div><dt>Storage</dt><dd>SQLite</dd></div>
-              <div><dt>Matching</dt><dd>Byte size · Streaming SHA-256</dd></div>
-              <div><dt>Safety</dt><dd>Read-only source libraries</dd></div>
+            <p class="project-number">02 / Local AI</p>
+            <h3>SourceRecall</h3>
+            <p class="project-subtitle">Local Retrieval-Augmented Generation</p>
+            <p>A local RAG system for document ingestion, embedding generation, vector retrieval, source grounding, and local model inference — built to answer questions against a personal document set without sending anything to a hosted API.</p>
+            <dl class="project-specs project-specs--proof">
+              <div><dt>Core stack</dt><dd>Python · ChromaDB · Sentence Transformers · Ollama</dd></div>
+              <div><dt>Focus</dt><dd>Local retrieval-augmented generation</dd></div>
             </dl>
-            <div class="keepwise-proof" aria-label="Keepwise validation proof points">
-              <div><strong>126</strong><span>Current frontend and Rust tests passing</span></div>
-              <div><strong>10,000</strong><span>Files in a disposable synthetic validation corpus</span></div>
-            </div>
-            <p class="keepwise-benchmark-note">Synthetic generated-file benchmark on one arm64 macOS system.</p>
-            <p class="project-note">Exact copies only. Visual similarity and source-file cleanup execution are not implemented.</p>
-            <!-- Future Keepwise case study: retain Milestone 1.7 and include a truthful Development Process section stating that Nick originated and directed the product; led requirements, architecture decisions, review, and validation; personally implemented selected parts; and Codex substantially accelerated implementation and streamlining. Future CTA location: View Keepwise Case Study. -->
+            <p class="project-note">Functioning prototype. Retrieval-quality and latency evaluation have not been formalized yet, and the interface is under active revision.</p>
+          </div>
+          <div class="project-visual sourcerecall-evidence" aria-label="SourceRecall system pipeline">
+            <div class="visual-label"><span>System flow</span><span>Local RAG pipeline</span></div>
+            <ol class="pipeline-diagram">
+              <li><span class="pipeline-step">Ingest</span></li>
+              <li><span class="pipeline-step">Embed</span></li>
+              <li><span class="pipeline-step">Vector store</span></li>
+              <li><span class="pipeline-step">Retrieve</span></li>
+              <li><span class="pipeline-step">Ground &amp; generate</span></li>
+            </ol>
+            <p class="pipeline-note">Chroma-backed retrieval grounds each response in the source document set before a local Ollama model generates an answer.</p>
           </div>
         </article>
 
-        <article class="project-row project-row--compact project-row--supporting">
+        <article class="project-row project-row--compact">
           <div class="project-copy">
-            <p class="project-number">04 / Local AI</p>
-            <h3>SourceRecall</h3>
-            <p class="project-subtitle">Local Retrieval-Augmented Generation</p>
-            <p>A local RAG system for document ingestion, embedding generation, vector retrieval, source grounding, and local model inference.</p>
-            <dl class="project-specs project-specs--proof">
-              <div><dt>Core stack</dt><dd>Python · ChromaDB · Sentence Transformers · Ollama</dd></div>
-              <div><dt>Focus</dt><dd>Local RAG</dd></div>
-            </dl>
-            <p class="project-note">Prototype; the interface remains under review.</p>
-            <!-- Future real evidence location: sanitized CLI retrieval trace. -->
+            <p class="project-number">03 / Model internals</p>
+            <h3>Transformer From Scratch</h3>
+            <p class="project-subtitle">Learning Build</p>
+            <p>A transformer implemented from first principles — attention, multi-head attention, and transformer blocks — to understand how the architecture actually works rather than only consuming it through high-level APIs.</p>
+            <p class="project-note">Learning project; not a production system.</p>
           </div>
         </article>
+
+        <div class="supporting-work" aria-label="Supporting and early work">
+          <p class="section-label">Also building</p>
+          <div class="supporting-grid">
+            <article class="supporting-card">
+              <figure class="supporting-card-media">
+                <img src="images/projects/keepwise/exact-review.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Keepwise demonstration interface with generated data showing two byte-for-byte duplicate photos side by side, a preferred copy, and Keep, Maybe, and Reject review controls">
+              </figure>
+              <div class="supporting-card-copy">
+                <p class="project-number">Product · Experimental</p>
+                <h3>Keepwise</h3>
+                <p>A macOS app I’m building to solve a problem I have as a photographer — finding byte-for-byte duplicate photos in a large library — with the long-term possibility of other photographers using it too. I designed the product direction, but Codex implemented a substantial share of the code, so this is supporting, AI-assisted product work rather than a primary engineering showcase.</p>
+                <p class="project-note">126 frontend and Rust tests passing. Duplicate matching was also exercised against a 10,000-file synthetic validation corpus on one arm64 macOS system. Exact copies only — visual similarity and cleanup execution are not implemented.</p>
+              </div>
+            </article>
+            <article class="supporting-card supporting-card--text-only">
+              <div class="supporting-card-copy">
+                <p class="project-number">2024 · Archived</p>
+                <h3>PhotoRank-AI</h3>
+                <p>My first AI/ML project — an early attempt at automated photo-quality ranking. Abandoned, but the starting point for the computer-vision interest that led to OrbitalVision.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="experience-section" id="experience" aria-labelledby="experience-title">
       <div class="shell experience-shell">
         <h2 id="experience-title">Experience &amp; Education</h2>
+
+        <article class="experience-flagship">
+          <p class="project-number">Flagship experience</p>
+          <h3>AI/ML Engineering Intern</h3>
+          <p class="experience-meta">Rocky, Kent State University · June–August 2026</p>
+          <p>Worked remotely with a team building Rocky, Kent State University’s internal AI chat platform intended to serve thousands of students. I implemented backend parsing so the API’s OpenAI-style JSON request format could be transformed into what Ollama needed, and built backend telemetry endpoints that the admin panel now consumes — though I didn’t build the admin panel’s frontend myself. Working inside an existing system with limited production server permissions meant learning new Python and library patterns quickly and designing around real constraints rather than ideal ones.</p>
+          <dl class="project-specs project-specs--proof">
+            <div><dt>Team</dt><dd>Remote · Kent State AI/ML</dd></div>
+            <div><dt>Scope</dt><dd>API request parsing · Backend telemetry</dd></div>
+            <div><dt>Constraint</dt><dd>Limited production server permissions</dd></div>
+          </dl>
+          <p class="project-note">Internal systems and source remain private.</p>
+        </article>
+
         <div class="experience-list">
-          <article class="experience-entry">
-            <h3>AI/ML Engineering Intern</h3>
-            <p class="experience-meta">Kent State University · June–August 2026</p>
-            <p>Worked on Rocky, Kent State University’s internal AI chat platform, contributing to LLM integration, API and parser validation, telemetry, automated testing, and production reliability.</p>
-          </article>
           <article class="experience-entry">
             <h3>B.S. Computer Science</h3>
             <p class="experience-meta">Kent State University · Expected May 2027</p>
-            <p>Cybersecurity concentration · GPA 3.24</p>
+            <p>Cybersecurity concentration.</p>
           </article>
           <article class="experience-entry">
             <h3>Owner &amp; Photographer</h3>
@@ -229,24 +241,6 @@
       </div>
     </section>
 
-    <section class="lab-section" id="lab" aria-labelledby="lab-title">
-      <div class="shell lab-shell">
-        <h2 id="lab-title">Lab</h2>
-        <div class="lab-list">
-          <article>
-            <span class="lab-number" aria-hidden="true">01</span>
-            <div><p class="project-number">Learning Build</p><h3>Transformer From Scratch</h3></div>
-            <p>Exploring attention, multi-head attention, transformer blocks, and language-model fundamentals from first principles.</p>
-          </article>
-          <article>
-            <span class="lab-number" aria-hidden="true">02</span>
-            <div><p class="project-number">Evolving Notes</p><h3>AI/ML Field Guide</h3></div>
-            <p>Evolving technical notes covering linear algebra, machine learning, neural-network architecture, and model fundamentals.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="shell about-grid">
         <div>
@@ -256,19 +250,6 @@
           <p>I’m a Kent State Computer Science student focused on AI/ML and software engineering. I like building complete systems—the model, backend, tests, and interface—so technical ideas become useful, reliable tools.</p>
           <p>Photography sharpens how I observe, frame problems, and communicate visually, while space and Earth-observation interests guide me toward meaningful technical work.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="photography-section" aria-labelledby="photography-title">
-      <picture class="photography-image">
-        <source srcset="images/site/photography-divider-800.webp 800w, images/site/photography-divider-1600.webp 1600w" sizes="100vw" type="image/webp">
-        <img src="images/drone4.jpg" width="1600" height="1200" loading="lazy" alt="Aerial photograph of a home and surrounding Ohio neighborhood beneath dramatic clouds">
-      </picture>
-      <div class="photography-overlay" aria-hidden="true"></div>
-      <div class="shell photography-content">
-        <p class="section-label">Photography &amp; FAA Part 107</p>
-        <h2 id="photography-title">Engineering meets visual storytelling.</h2>
-        <p>Photography shapes how I approach computer vision, imaging workflows, visual communication, and the details that make technical work understandable.</p>
       </div>
     </section>
 
@@ -318,7 +299,6 @@
       </div>
       <nav aria-label="Footer">
         <a href="#projects">Projects</a>
-        <a href="#lab">Lab</a>
         <a href="#experience">Experience</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -326,9 +306,17 @@
       <div class="footer-meta">
         <a href="https://github.com/NickVuletich">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/nicholas-vuletich-b5507a321/">LinkedIn ↗</a>
+        <a href="real-estate.html">Photography ↗</a>
         <span>© <span data-year></span> Nick Vuletich</span>
       </div>
     </div>
   </footer>
+
+  <dialog id="orbital-lightbox" class="lightbox-dialog" aria-label="OrbitalVision test visualization, enlarged">
+    <form method="dialog" class="lightbox-close-form">
+      <button type="submit" class="lightbox-close icon-button" aria-label="Close enlarged view">✕</button>
+    </form>
+    <img src="images/projects/orbitalvision/test-prediction.webp" width="1800" height="467" alt="Four-panel OrbitalVision test visualization showing an input satellite image, ground-truth building mask, probability heatmap, and predicted binary mask">
+  </dialog>
 </body>
 </html>
