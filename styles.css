@@ -801,52 +801,29 @@ p {
   line-height: 1;
 }
 
-.sourcerecall-evidence {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 320px;
+.project-visual.sourcerecall-evidence {
+  min-width: 0;
+  min-height: 0;
 }
 
-.pipeline-diagram {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.sourcerecall-demo {
   margin: 0;
-  padding: 0;
-  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
 }
 
-.pipeline-diagram li {
-  display: flex;
-  align-items: center;
+.sourcerecall-demo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
-.pipeline-step {
-  padding: 0.55rem 0.85rem;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-xs);
-  background: var(--surface-subtle);
-  color: var(--text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.pipeline-diagram li:not(:last-child)::after {
-  margin: 0 0.5rem;
-  color: var(--faint);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  content: "→";
-}
-
-.pipeline-note {
-  max-width: 34rem;
-  margin: 1.25rem 0 0;
-  font-size: 0.85rem;
+.sourcerecall-demo figcaption {
+  padding: 0.55rem 0.7rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.75rem;
 }
 
 .supporting-work {

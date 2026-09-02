@@ -145,26 +145,27 @@
 
         <article class="project-row" id="sourcerecall">
           <div class="project-copy">
-            <p class="project-number">02 / Local AI</p>
+            <p class="project-number">02 / Retrieval systems</p>
             <h3>SourceRecall</h3>
-            <p class="project-subtitle">Local Retrieval-Augmented Generation</p>
-            <p>A local RAG system for document ingestion, embedding generation, vector retrieval, source grounding, and local model inference — built to answer questions against a personal document set without sending anything to a hosted API.</p>
+            <p class="project-subtitle">Document RAG with Page-Level Provenance</p>
+            <p>A retrieval-augmented generation system for querying notes, technical documents, and research PDFs. Built without a high-level RAG framework, it connects document ingestion, embeddings, vector retrieval, and hosted generation, with a Streamlit interface showing retrieved filenames, PDF pages, and vector distances.</p>
             <dl class="project-specs project-specs--proof">
-              <div><dt>Core stack</dt><dd>Python · ChromaDB · Sentence Transformers · Ollama</dd></div>
-              <div><dt>Focus</dt><dd>Local retrieval-augmented generation</dd></div>
+              <div><dt>Core stack</dt><dd>Python · Streamlit · ChromaDB · Sentence Transformers · Groq</dd></div>
+              <div><dt>Retrieval baseline</dt><dd>Hit@1: 48% · Hit@3: 80% · Hit@5: 92%</dd></div>
             </dl>
-            <p class="project-note">Functioning prototype. Retrieval-quality and latency evaluation have not been formalized yet, and the interface is under active revision.</p>
+            <p class="project-note">Source-and-page matching on 25 manually labeled questions from one research PDF, separate from the OWASP demo. Measures retrieval, not answer accuracy or general performance. The interface shows metadata, not full passages or inline citations.</p>
+            <a class="button button--secondary" href="https://source-recall.streamlit.app/">Try SourceRecall demo <span aria-hidden="true">↗</span></a>
+            <p class="project-note">The demo uses the OWASP Top 10 for LLM Applications 2025. Questions and retrieved document text are sent to Groq for hosted generation.</p>
           </div>
-          <div class="project-visual sourcerecall-evidence" aria-label="SourceRecall system pipeline">
-            <div class="visual-label"><span>System flow</span><span>Local RAG pipeline</span></div>
-            <ol class="pipeline-diagram">
-              <li><span class="pipeline-step">Ingest</span></li>
-              <li><span class="pipeline-step">Embed</span></li>
-              <li><span class="pipeline-step">Vector store</span></li>
-              <li><span class="pipeline-step">Retrieve</span></li>
-              <li><span class="pipeline-step">Ground &amp; generate</span></li>
-            </ol>
-            <p class="pipeline-note">Chroma-backed retrieval grounds each response in the source document set before a local Ollama model generates an answer.</p>
+          <div class="project-visual sourcerecall-evidence" aria-label="SourceRecall public demo screenshot">
+            <div class="visual-label"><span>Public demo</span><span>SourceRecall v2 · Streamlit</span></div>
+            <figure class="sourcerecall-demo">
+              <a class="evidence-zoom-trigger" href="images/projects/source-recall/sourcerecall-demo.png" target="_blank" rel="noopener" aria-label="Open SourceRecall demo screenshot full size (opens in a new tab)">
+                <img src="images/projects/source-recall/sourcerecall-demo.png" width="3024" height="1964" loading="lazy" decoding="async" alt="SourceRecall Streamlit demo answering a question about excessive agency, with the OWASP document sidebar and retrieved sources showing PDF page numbers and vector distances">
+                <span class="evidence-zoom-badge" aria-hidden="true">Full size ↗</span>
+              </a>
+              <figcaption>README screenshot / generated answer and retrieved source metadata</figcaption>
+            </figure>
           </div>
         </article>
 
