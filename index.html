@@ -25,7 +25,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=exitzero-showcase">
   <script src="script.js?v=orbital-homepage-simplify" defer></script>
 </head>
 <body class="portfolio-home" id="home">
@@ -108,15 +108,46 @@
       <div class="shell section-intro">
         <p class="section-label">Selected work</p>
         <div>
-          <h2 id="projects-title">Systems built across the AI stack.</h2>
-          <p>Selected work spanning computer vision, retrieval-augmented generation, and model internals — plus the earlier and supporting projects behind them.</p>
+          <h2 id="projects-title">Systems built across AI and software.</h2>
+          <p>Selected work spanning simulation, constrained optimization, computer vision, retrieval-augmented generation, and model internals — plus the earlier and supporting projects behind them.</p>
         </div>
       </div>
 
       <div class="shell project-list">
+        <article class="project-row" id="exitzero" aria-labelledby="exitzero-title">
+          <div class="project-copy">
+            <p class="project-number">01 / Simulation &amp; optimization</p>
+            <h3 id="exitzero-title">ExitZero</h3>
+            <p class="project-subtitle">Evacuation Simulation &amp; Layout Optimization</p>
+            <p class="project-note">Completed · <time datetime="2026-10">October 2026</time> · Four-person team<br>Stark State Halloween Hackathon · October 24–25, 2026</p>
+            <p>An interactive evacuation simulation and building-layout optimization platform built with a four-person team. Users explore how simulated occupants navigate environments, evaluate evacuation performance, identify bottlenecks, and experiment with layout improvements.</p>
+            <p><strong>My contributions:</strong> I developed the deterministic Rust stress-testing subsystem, including forced exit closures, obstruction experiments, scenario ranking, and starting-position fairness validation for comparable runs. I also worked on constrained layout optimization that evaluates valid exit and doorway widenings within a bounded candidate budget, and collaborated on integrating these systems into the team’s functional hackathon prototype.</p>
+            <ul class="project-tags" aria-label="ExitZero technologies">
+              <li>Rust</li>
+              <li>Axum</li>
+              <li>React</li>
+              <li>TypeScript</li>
+            </ul>
+            <div class="project-links" aria-label="ExitZero links">
+              <a class="button button--primary" href="https://exitzero.vuletich.dev/">Live Demo <span aria-hidden="true">↗</span></a>
+              <a class="button button--secondary" href="https://github.com/Kent-Brogrammers/ExitZero">GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div class="project-visual exitzero-evidence" aria-label="ExitZero live application screenshot">
+            <div class="visual-label"><span>Live application</span><span>ExitZero Studio · October 2026</span></div>
+            <figure class="exitzero-preview">
+              <a class="evidence-zoom-trigger" href="images/projects/exitzero/studio-preview.webp" target="_blank" rel="noopener" aria-label="Open ExitZero application screenshot full size (opens in a new tab)">
+                <img src="images/projects/exitzero/studio-preview.webp" width="1440" height="900" loading="lazy" decoding="async" alt="ExitZero Studio live application showing an office floor plan with a recorded evacuation traffic heatmap">
+                <span class="evidence-zoom-badge" aria-hidden="true">Full size ↗</span>
+              </a>
+              <figcaption>Live application / office plan with recorded simulation traffic</figcaption>
+            </figure>
+          </div>
+        </article>
+
         <article class="project-row project-row--reverse project-row--orbital">
           <div class="project-copy orbital-copy">
-            <p class="project-number">01 / Computer vision</p>
+            <p class="project-number">02 / Computer vision</p>
             <h3>OrbitalVision</h3>
             <p class="project-subtitle">Aerial Building Footprint Segmentation</p>
             <p>A PyTorch semantic-segmentation project using a custom TinyUNet encoder-decoder with skip connections to predict building footprints from Massachusetts satellite imagery. The goal wasn’t just a working model — it was understanding how a U-Net actually moves data through an encoder, a decoder, and the skip connections between them, and learning to test each piece in isolation before integrating the full pipeline, rather than building everything at once and debugging afterward.</p>
@@ -145,7 +176,7 @@
 
         <article class="project-row" id="sourcerecall">
           <div class="project-copy">
-            <p class="project-number">02 / Retrieval systems</p>
+            <p class="project-number">03 / Retrieval systems</p>
             <h3>SourceRecall</h3>
             <p class="project-subtitle">Document RAG with Page-Level Provenance</p>
             <p>A retrieval-augmented generation system for querying notes, technical documents, and research PDFs. Built without a high-level RAG framework, it connects document ingestion, embeddings, vector retrieval, and hosted generation, with a Streamlit interface showing retrieved filenames, PDF pages, and vector distances.</p>
@@ -171,7 +202,7 @@
 
         <article class="project-row project-row--compact">
           <div class="project-copy">
-            <p class="project-number">03 / Model internals</p>
+            <p class="project-number">04 / Model internals</p>
             <h3>Transformer From Scratch</h3>
             <p class="project-subtitle">Learning Build</p>
             <p>A transformer implemented from first principles — attention, multi-head attention, and transformer blocks — to understand how the architecture actually works rather than only consuming it through high-level APIs.</p>

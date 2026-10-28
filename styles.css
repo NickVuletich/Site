@@ -698,6 +698,36 @@ p {
   max-width: 48rem;
 }
 
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-tags li {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.project-links .button--primary {
+  color: var(--page);
+}
+
 .project-visual {
   min-height: 440px;
   padding: 1.1rem;
@@ -801,25 +831,29 @@ p {
   line-height: 1;
 }
 
-.project-visual.sourcerecall-evidence {
+.project-visual.sourcerecall-evidence,
+.project-visual.exitzero-evidence {
   min-width: 0;
   min-height: 0;
 }
 
-.sourcerecall-demo {
+.sourcerecall-demo,
+.exitzero-preview {
   margin: 0;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
 }
 
-.sourcerecall-demo img {
+.sourcerecall-demo img,
+.exitzero-preview img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
-.sourcerecall-demo figcaption {
+.sourcerecall-demo figcaption,
+.exitzero-preview figcaption {
   padding: 0.55rem 0.7rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
